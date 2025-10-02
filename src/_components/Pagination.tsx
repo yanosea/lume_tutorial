@@ -1,0 +1,31 @@
+interface PaginationProps {
+  previousUrl?: string;
+  nextUrl?: string;
+}
+
+export default function Pagination({ previousUrl, nextUrl }: PaginationProps) {
+  return (
+    <nav className="flex justify-between mt-12">
+      {previousUrl
+        ? (
+          <a
+            href={previousUrl}
+            className="text-blue-600 hover:text-blue-800 transition-colors font-medium"
+          >
+            ← prev
+          </a>
+        )
+        : <div className="flex-1" />}
+      {nextUrl
+        ? (
+          <a
+            href={nextUrl}
+            className="text-blue-600 hover:text-blue-800 transition-colors font-medium"
+          >
+            next →
+          </a>
+        )
+        : <div className="flex-1" />}
+    </nav>
+  );
+}
