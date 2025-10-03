@@ -10,7 +10,7 @@ export default function Pagination({ previousUrl, nextUrl }: PaginationProps) {
         ? (
           <a
             href={previousUrl}
-            className="text-blue-600 hover:text-blue-800 transition-colors font-medium"
+            className="link-primary transition-colors font-medium"
           >
             ← prev
           </a>
@@ -20,7 +20,7 @@ export default function Pagination({ previousUrl, nextUrl }: PaginationProps) {
         ? (
           <a
             href={nextUrl}
-            className="text-blue-600 hover:text-blue-800 transition-colors font-medium"
+            className="link-primary transition-colors font-medium"
           >
             next →
           </a>
