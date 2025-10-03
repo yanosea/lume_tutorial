@@ -43,10 +43,6 @@ function updateTheme(theme: Theme, withTransition = false): void {
     return;
   }
 
-  // Detect iOS devices
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
   if (isIOS) {
     // iOS: Use opacity fade to work around WebKit transition inheritance bug
     const animationClass = theme === "dark" ? "theme-fade-to-dark" : "theme-fade-to-light";
@@ -60,6 +56,15 @@ function updateTheme(theme: Theme, withTransition = false): void {
     // Desktop: CSS transitions handle smooth color changes
     applyTheme();
   }
+}
+
+// Detect iOS devices early and disable CSS transitions
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+if (isIOS) {
+  // Disable global CSS transitions for iOS
+  document.documentElement.style.setProperty('--transition-duration', '0ms');
 }
 
 // Initialize theme on page load

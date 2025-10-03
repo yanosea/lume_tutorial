@@ -44,8 +44,15 @@ main {
  */
 
 /* Desktop: Global transition for smooth color changes */
+/* iOS: Transition duration is set to 0ms via CSS variable to disable transitions */
+:root {
+  --transition-duration: 150ms;
+}
+
 * {
-  transition: background-color 150ms, color 150ms, border-color 150ms;
+  transition: background-color var(--transition-duration),
+              color var(--transition-duration),
+              border-color var(--transition-duration);
 }
 
 /* iOS: Opacity fade animations (applied to body element) */
