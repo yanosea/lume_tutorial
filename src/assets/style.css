@@ -5,8 +5,31 @@
 /* Dark mode variant configuration */
 @variant dark (&:is(.dark *));
 
+/* View Transitions API configuration */
+@view-transition {
+  navigation: auto;
+}
+
 html {
   overflow-y: scroll;
+}
+
+/* View Transitions: Keep header and footer fixed during transitions */
+header {
+  view-transition-name: header;
+}
+
+footer {
+  view-transition-name: footer;
+}
+
+main {
+  view-transition-name: main-content;
+}
+
+/* Custom View Transition duration to match theme toggle speed (150ms) */
+::view-transition-group(*) {
+  animation-duration: 150ms;
 }
 
 /* Global transition for theme switching */
