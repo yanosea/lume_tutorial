@@ -4,7 +4,7 @@ export default (
   { title, date, description, tags, children }: Lume.Data,
 ) => (
   <main className="card flex-1 prose-content">
-    <header className="mb-8">
+    <div className="mb-8">
       <h1 className="heading-page mb-4">{title}</h1>
       {date && (
         <time className="text-muted text-sm">
@@ -31,7 +31,7 @@ export default (
           ))}
         </div>
       )}
-    </header>
+    </div>
     {children}
   </main>
 );
