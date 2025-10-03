@@ -36,13 +36,12 @@ main {
 *,
 *::before,
 *::after {
-  -webkit-transition-property: background-color, color, border-color;
-  transition-property: background-color, color, border-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: ease;
-  transition-timing-function: ease;
-  will-change: background-color, color, border-color;
+  -webkit-transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Reusable component classes */
