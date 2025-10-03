@@ -43,7 +43,7 @@ main {
 }
 
 .card-article {
-  @apply border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-md transition-all;
+  @apply border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-md;
 }
 
 .heading-page {
@@ -115,7 +115,6 @@ main {
 .prose-content a {
   @apply text-blue-600 dark:text-blue-400;
   text-decoration: none;
-  transition: color 150ms;
 }
 
 .prose-content a:hover {
@@ -181,7 +180,6 @@ main {
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  transition: box-shadow 150ms;
 }
 
 .prose-links li:hover {
@@ -193,7 +191,6 @@ main {
   text-decoration: none;
   font-weight: 500;
   font-size: 1.125rem;
-  transition: color 150ms;
 }
 
 .prose-links a:hover {
