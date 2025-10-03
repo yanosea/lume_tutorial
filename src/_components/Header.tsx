@@ -1,6 +1,6 @@
 export default function Header({ comp }: Lume.Data) {
   return (
-    <header className="bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-900 dark:to-purple-900 text-white rounded-lg px-8 py-6 mb-8">
+    <header className="sticky top-0 z-10 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-900 dark:to-purple-900 text-white rounded-lg px-8 py-6 mb-8">
       <nav className="flex items-center justify-between">
         <a
           href="/"
