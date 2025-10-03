@@ -47,11 +47,15 @@ function updateTheme(theme: Theme, withTransition = false): void {
     // iOS: Use opacity fade to work around WebKit transition inheritance bug
     const animationClass = theme === "dark" ? "theme-fade-to-dark" : "theme-fade-to-light";
     document.body.classList.add(animationClass);
-    applyTheme();
 
-    setTimeout(() => {
-      document.body.classList.remove(animationClass);
-    }, 150);
+    // Use requestAnimationFrame to ensure animation starts before DOM update
+    requestAnimationFrame(() => {
+      applyTheme();
+
+      setTimeout(() => {
+        document.body.classList.remove(animationClass);
+      }, 150);
+    });
   } else {
     // Desktop: CSS transitions handle smooth color changes
     applyTheme();
