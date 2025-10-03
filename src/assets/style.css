@@ -34,8 +34,11 @@ main {
 
 /* Global transition for theme switching */
 * {
+  -webkit-transition-property: background-color, color, border-color;
   transition-property: background-color, color, border-color;
+  -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
 }
 
