@@ -25,6 +25,6 @@ site.filter("date", (date) => {
   }).format(new Date(date));
 });
 
-site.add("style.css");
+site.add("assets");
 
 export default site;
