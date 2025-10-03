@@ -6,6 +6,9 @@ interface ThemeCalculationParams {
   systemSettingDark: MediaQueryList;
 }
 
+/**
+ * Determine the theme based on localStorage or system preference
+ */
 function calculateSettingAsThemeString({
   localStorageTheme,
   systemSettingDark,
@@ -19,8 +22,14 @@ function calculateSettingAsThemeString({
   return "light";
 }
 
+/**
+ * Update the theme with optional animation
+ * - Desktop browsers: Use CSS transitions for smooth color changes
+ * - iOS browsers: Use opacity fade animation to avoid WebKit bug #46041
+ *   (CSS transition inheritance delay on nested elements)
+ */
 function updateTheme(theme: Theme, withTransition = false): void {
-  const updateDOM = () => {
+  const applyTheme = () => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
@@ -28,24 +37,29 @@ function updateTheme(theme: Theme, withTransition = false): void {
     }
   };
 
+  // No transition for initial load or system theme changes
   if (!withTransition) {
-    updateDOM();
+    applyTheme();
     return;
   }
 
-  // Add transition class first
-  document.documentElement.classList.add('theme-transitioning');
+  // Detect iOS devices
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-  // Use requestAnimationFrame to ensure class is applied before DOM update
-  requestAnimationFrame(() => {
-    // Update the theme
-    updateDOM();
+  if (isIOS) {
+    // iOS: Use opacity fade to work around WebKit transition inheritance bug
+    const animationClass = theme === "dark" ? "theme-fade-to-dark" : "theme-fade-to-light";
+    document.body.classList.add(animationClass);
+    applyTheme();
 
-    // Remove the class after transition completes
     setTimeout(() => {
-      document.documentElement.classList.remove('theme-transitioning');
+      document.body.classList.remove(animationClass);
     }, 150);
-  });
+  } else {
+    // Desktop: CSS transitions handle smooth color changes
+    applyTheme();
+  }
 }
 
 // Initialize theme on page load
@@ -67,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleButton.addEventListener("click", () => {
       const newTheme: Theme = currentTheme === "dark" ? "light" : "dark";
       localStorage.setItem("theme", newTheme);
-      updateTheme(newTheme, true); // Enable transition for user clicks
+      updateTheme(newTheme, true);
       currentTheme = newTheme;
     });
   }
