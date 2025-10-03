@@ -32,9 +32,10 @@ main {
   animation-duration: 150ms;
 }
 
-/* Global transition for theme switching */
-* {
-  transition: background-color 150ms, color 150ms, border-color 150ms;
+/* Global transition for theme switching - only when actively transitioning */
+html.theme-transitioning,
+html.theme-transitioning * {
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease !important;
 }
 
 /* Reusable component classes */

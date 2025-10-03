@@ -28,19 +28,24 @@ function updateTheme(theme: Theme, withTransition = false): void {
     }
   };
 
-  // Detect WebKit (Safari/iOS Safari)
-  const isWebKit = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ||
-                   /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-  // Use View Transitions API only on WebKit if available and requested
-  if (withTransition && isWebKit && 'startViewTransition' in document) {
-    (document as any).startViewTransition(() => {
-      updateDOM();
-    });
-  } else {
-    // On non-WebKit browsers, use regular CSS transitions
+  if (!withTransition) {
     updateDOM();
+    return;
   }
+
+  // Add a class to trigger transitions
+  document.documentElement.classList.add('theme-transitioning');
+
+  // Force a style recalculation
+  void document.documentElement.offsetHeight;
+
+  // Update the theme
+  updateDOM();
+
+  // Remove the class after transition completes
+  setTimeout(() => {
+    document.documentElement.classList.remove('theme-transitioning');
+  }, 150);
 }
 
 // Initialize theme on page load
