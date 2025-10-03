@@ -1,1 +1,1 @@
-export const layout = "BlogLayout.tsx";
+export const layout = "BlogPostPageLayout.tsx";

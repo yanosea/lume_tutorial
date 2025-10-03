@@ -1,4 +1,4 @@
-export const layout = "BaseLayout.tsx";
+export const layout = "BlogPageLayout.tsx";
 
 export default function* ({ search, paginate, comp }: Lume.Data) {
   // Get all blog posts
@@ -38,70 +38,66 @@ export default function* ({ search, paginate, comp }: Lume.Data) {
         url: page.url,
         title: `Tag: ${tag}`,
         content: (
-          <main className="bg-white rounded-lg shadow-lg p-8 flex-1">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6 leading-normal">
+          <>
+            <h1 className="heading-page">
               Posts tagged "{tag}"
             </h1>
 
-              {page.results.length === 0
-                ? (
-                  <p className="text-gray-600 text-center py-8">
-                    No posts found.
-                  </p>
-                )
-                : (
-                  <div className="space-y-6">
-                    {page.results.map((post: any) => (
-                      <article
-                        key={post.url}
-                        className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
-                      >
-                        <h2 className="text-2xl font-semibold mb-2">
-                          <a
-                            href={post.url}
-                            className="text-blue-600 hover:text-blue-800 transition-colors"
-                          >
-                            {post.title}
-                          </a>
-                        </h2>
+            {page.results.length === 0
+              ? (
+                <p className="text-muted text-center py-8">
+                  No posts found.
+                </p>
+              )
+              : (
+                <div className="space-y-6">
+                  {page.results.map((post: any) => (
+                    <article
+                      key={post.url}
+                      className="card-article"
+                    >
+                      <h2 className="text-2xl font-semibold mb-2">
+                        <a
+                          href={post.url}
+                          className="link-primary"
+                        >
+                          {post.title}
+                        </a>
+                      </h2>
 
-                        {post.date && (
-                          <time className="text-gray-600 text-sm">
-                            {new Date(post.date).toLocaleDateString("ja-JP", {
-                              year: "numeric",
-                              month: "2-digit",
-                              day: "2-digit",
-                            }).replace(/\//g, "/")}
-                          </time>
-                        )}
+                      {post.date && (
+                        <time className="text-muted text-sm">
+                          {new Date(post.date).toLocaleDateString("ja-JP", {
+                            year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                          }).replace(/\//g, "/")}
+                        </time>
+                      )}
 
-                        {post.description && (
-                          <p className="text-gray-700 mt-3">
-                            {post.description}
-                          </p>
-                        )}
+                      {post.description && (
+                        <p className="text-secondary mt-3">
+                          {post.description}
+                        </p>
+                      )}
 
-                        {post.tags && post.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-2 mt-4">
-                            {post.tags.map((postTag: string) => (
-                              <a
-                                key={postTag}
-                                href={`/tags/${postTag}.html`}
-                                className={`px-2 py-1 text-xs rounded transition-colors ${
-                                  postTag === tag
-                                    ? "bg-blue-100 text-blue-800 font-medium"
-                                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                                }`}
-                              >
-                                {postTag}
-                              </a>
-                            ))}
-                          </div>
-                        )}
-                      </article>
-                    ))}
-                  </div>
-                )}
+                      {post.tags && post.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {post.tags.map((postTag: string) => (
+                            <a
+                              key={postTag}
+                              href={`/tags/${postTag}.html`}
+                              className={postTag === tag ? "tag-active" : "tag"}
+                            >
+                              {postTag}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </article>
+                  ))}
+                </div>
+              )}
 
             {/* Pagination navigation */}
             {page.pagination.totalPages > 1 && (
@@ -110,7 +106,7 @@ export default function* ({ search, paginate, comp }: Lume.Data) {
                 nextUrl={page.pagination.next}
               />
             )}
-          </main>
+          </>
         ),
       };
     }

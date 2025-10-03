@@ -1,32 +1,33 @@
-export default function header() {
+export default function Header({ comp }: Lume.Data) {
   return (
-    <header className="bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-lg px-8 py-6 mb-8">
+    <header className="bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-900 dark:to-purple-900 text-white rounded-lg px-8 py-6 mb-8">
       <nav className="flex items-center justify-between">
         <a
           href="/"
-          className="text-2xl font-bold text-white hover:text-blue-200 transition-colors"
+          className="text-2xl font-bold text-white hover:text-blue-200 dark:hover:text-blue-300"
         >
           My Blog
         </a>
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           <a
             href="/about.html"
-            className="text-white hover:text-blue-200 font-medium transition-colors px-4 py-2 rounded-md hover:bg-white hover:bg-opacity-20"
+            className="text-white hover:text-blue-200 dark:hover:text-blue-300 font-medium px-4 py-2 rounded-md hover:bg-white/20 dark:hover:bg-black/20"
           >
             about
           </a>
           <a
             href="/blog.html"
-            className="text-white hover:text-blue-200 font-medium transition-colors px-4 py-2 rounded-md hover:bg-white hover:bg-opacity-20"
+            className="text-white hover:text-blue-200 dark:hover:text-blue-300 font-medium px-4 py-2 rounded-md hover:bg-white/20 dark:hover:bg-black/20"
           >
             blog
           </a>
           <a
             href="/links.html"
-            className="text-white hover:text-blue-200 font-medium transition-colors px-4 py-2 rounded-md hover:bg-white hover:bg-opacity-20"
+            className="text-white hover:text-blue-200 dark:hover:text-blue-300 font-medium px-4 py-2 rounded-md hover:bg-white/20 dark:hover:bg-black/20"
           >
             links
           </a>
+          <comp.ThemeToggleButton />
         </div>
       </nav>
     </header>

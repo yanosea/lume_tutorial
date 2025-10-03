@@ -1,4 +1,4 @@
-export const layout = "BaseLayout.tsx";
+export const layout = "BlogPageLayout.tsx";
 
 export default function* ({ comp, search, paginate }: Lume.Data) {
   // Get posts from blog directory and sort by date
@@ -27,31 +27,31 @@ export default function* ({ comp, search, paginate }: Lume.Data) {
       url: page.url,
       title: "Blog",
       content: (
-        <main className="bg-white rounded-lg shadow-lg p-8 flex-1">
-          <h1 className="text-3xl font-bold text-gray-900 mb-6 leading-normal">
+        <>
+          <h1 className="heading-page">
             Blog Posts
           </h1>
 
           {page.results.length === 0
-            ? <p className="text-gray-600 text-center py-8">No posts yet.</p>
+            ? <p className="text-muted text-center py-8">No posts yet.</p>
             : (
               <div className="space-y-6">
                 {page.results.map((post: any) => (
                   <article
                     key={post.url}
-                    className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
+                    className="card-article"
                   >
                     <h2 className="text-2xl font-semibold mb-2">
                       <a
                         href={post.url}
-                        className="text-blue-600 hover:text-blue-800 transition-colors"
+                        className="link-primary"
                       >
                         {post.title}
                       </a>
                     </h2>
 
                     {post.date && (
-                      <time className="text-gray-600 text-sm">
+                      <time className="text-muted text-sm">
                         {new Date(post.date).toLocaleDateString("ja-JP", {
                           year: "numeric",
                           month: "2-digit",
@@ -61,7 +61,7 @@ export default function* ({ comp, search, paginate }: Lume.Data) {
                     )}
 
                     {post.description && (
-                      <p className="text-gray-700 mt-3">{post.description}</p>
+                      <p className="text-secondary mt-3">{post.description}</p>
                     )}
 
                     {post.tags && post.tags.length > 0 && (
@@ -70,7 +70,7 @@ export default function* ({ comp, search, paginate }: Lume.Data) {
                           <a
                             key={tag}
                             href={`/tags/${tag}.html`}
-                            className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded hover:bg-gray-200 transition-colors"
+                            className="tag"
                           >
                             {tag}
                           </a>
@@ -89,7 +89,7 @@ export default function* ({ comp, search, paginate }: Lume.Data) {
               nextUrl={page.pagination.next}
             />
           )}
-        </main>
+        </>
       ),
     };
   }

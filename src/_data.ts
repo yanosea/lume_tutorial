@@ -1,4 +1,4 @@
-export const layout = "DefaultLayout.tsx";
+export const layout = "MdxPageLayout.tsx";
 
 export function url(page: Lume.Page) {
   if (page.src.path === "index") {
