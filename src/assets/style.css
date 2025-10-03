@@ -33,9 +33,11 @@ main {
 }
 
 /* Global transition for theme switching - only when actively transitioning */
-html.theme-transitioning,
-html.theme-transitioning * {
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
   transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease !important;
+  transition-delay: 0s !important;
 }
 
 /* Reusable component classes */

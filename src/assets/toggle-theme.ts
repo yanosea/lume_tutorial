@@ -33,19 +33,19 @@ function updateTheme(theme: Theme, withTransition = false): void {
     return;
   }
 
-  // Add a class to trigger transitions
+  // Add transition class first
   document.documentElement.classList.add('theme-transitioning');
 
-  // Force a style recalculation
-  void document.documentElement.offsetHeight;
+  // Use requestAnimationFrame to ensure class is applied before DOM update
+  requestAnimationFrame(() => {
+    // Update the theme
+    updateDOM();
 
-  // Update the theme
-  updateDOM();
-
-  // Remove the class after transition completes
-  setTimeout(() => {
-    document.documentElement.classList.remove('theme-transitioning');
-  }, 150);
+    // Remove the class after transition completes
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-transitioning');
+    }, 150);
+  });
 }
 
 // Initialize theme on page load
