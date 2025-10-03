@@ -19,11 +19,27 @@ function calculateSettingAsThemeString({
   return "light";
 }
 
-function updateTheme(theme: Theme): void {
-  if (theme === "dark") {
-    document.documentElement.classList.add("dark");
+function updateTheme(theme: Theme, withTransition = false): void {
+  const updateDOM = () => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  // Detect WebKit (Safari/iOS Safari)
+  const isWebKit = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ||
+                   /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  // Use View Transitions API only on WebKit if available and requested
+  if (withTransition && isWebKit && 'startViewTransition' in document) {
+    (document as any).startViewTransition(() => {
+      updateDOM();
+    });
   } else {
-    document.documentElement.classList.remove("dark");
+    // On non-WebKit browsers, use regular CSS transitions
+    updateDOM();
   }
 }
 
@@ -46,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleButton.addEventListener("click", () => {
       const newTheme: Theme = currentTheme === "dark" ? "light" : "dark";
       localStorage.setItem("theme", newTheme);
-      updateTheme(newTheme);
+      updateTheme(newTheme, true); // Enable transition for user clicks
       currentTheme = newTheme;
     });
   }
