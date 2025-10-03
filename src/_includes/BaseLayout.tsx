@@ -12,6 +12,12 @@ export default ({ title, children, comp }: BaseLayoutProps) => (
         <meta charset="UTF-8" />
         <title>{title}</title>
         <link rel="stylesheet" href="/assets/style.css" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS Feed"
+          href="/feed.xml"
+        />
         <script src="/assets/toggle-theme.js"></script>
       </head>
       <body className="font-sans bg-slate-50 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">

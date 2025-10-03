@@ -18,6 +18,9 @@ export default function Header({ comp }: Lume.Data) {
           <a href="/links.html" className="nav-link">
             links
           </a>
+          <a href="/feed.xml" className="nav-link">
+            📡
+          </a>
           <comp.ThemeToggleButton />
         </div>
       </nav>

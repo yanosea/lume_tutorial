@@ -1,3 +1,13 @@
+/**
+ * Lume Configuration
+ *
+ * TODO:
+ * 1. Change location URL to your actual site URL
+ * 2. Update twitter account in src/_data.ts
+ * 3. Add /favicon.svg file for automatic favicon generation
+ * 4. Add images with site.add() for transform_images auto-optimization
+ */
+
 import lume from "lume/mod.ts";
 import jsx from "lume/plugins/jsx.ts";
 import mdx from "lume/plugins/mdx.ts";
@@ -5,9 +15,23 @@ import tailwindcss from "lume/plugins/tailwindcss.ts";
 import postcss from "lume/plugins/postcss.ts";
 import paginate from "lume/plugins/paginate.ts";
 import esbuild from "lume/plugins/esbuild.ts";
+import sitemap from "lume/plugins/sitemap.ts";
+import metas from "lume/plugins/metas.ts";
+import readingInfo from "lume/plugins/reading_info.ts";
+import minifyHTML from "lume/plugins/minify_html.ts";
+import feed from "lume/plugins/feed.ts";
+import robots from "lume/plugins/robots.ts";
+import date from "lume/plugins/date.ts";
+import favicon from "lume/plugins/favicon.ts";
+import ogImages from "lume/plugins/og_images.ts";
+import svgo from "lume/plugins/svgo.ts";
+import transformImages from "lume/plugins/transform_images.ts";
+import picture from "lume/plugins/picture.ts";
+import codeHighlight from "lume/plugins/code_highlight.ts";
 
 const site = lume({
   src: "./src",
+  location: new URL("https://example.com"), // TODO: Change to your actual site URL
 });
 
 site.use(jsx());
@@ -16,16 +40,34 @@ site.use(tailwindcss());
 site.use(postcss());
 site.use(paginate());
 site.use(esbuild());
-
-// Blog posts collection configuration
-site.data("blog", "/blog/*.mdx");
-site.filter("date", (date) => {
-  return new Intl.DateTimeFormat("ja-JP", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date(date));
-});
+site.use(sitemap());
+site.use(metas());
+site.use(readingInfo({
+  extensions: [".md", ".mdx"],
+}));
+site.use(minifyHTML());
+site.use(feed({
+  output: ["/feed.xml"],
+  query: "type=blog",
+  sort: "date=desc",
+  info: {
+    title: "=site.title",
+    description: "=site.description",
+  },
+  items: {
+    title: "=title",
+    description: "=description",
+    published: "=date",
+  },
+}));
+site.use(robots());
+site.use(date());
+site.use(favicon());
+site.use(ogImages());
+site.use(svgo());
+site.use(transformImages());
+site.use(picture());
+site.use(codeHighlight());
 
 site.add("assets");
 
