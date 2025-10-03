@@ -27,53 +27,11 @@ main {
   view-transition-name: main-content;
 }
 
-/* View Transitions API: Match theme toggle animation duration */
-::view-transition-group(*) {
-  animation-duration: 150ms;
-}
-
-/*
- * Theme switching animations
- *
- * Desktop browsers (Chrome, Firefox, Safari desktop):
- *   Use standard CSS transitions on all elements for smooth color changes
- *
- * iOS browsers (Safari iOS, Vivaldi iOS):
- *   Use opacity fade animation to work around WebKit bug #46041
- *   (nested elements inherit parent transitions causing sequential delays)
- */
-
-/* Desktop: Global transition for smooth color changes */
-/* iOS: Transition duration is set to 0ms via CSS variable to disable transitions */
-:root {
-  --transition-duration: 150ms;
-}
-
-* {
-  transition: background-color var(--transition-duration),
-              color var(--transition-duration),
-              border-color var(--transition-duration);
-}
-
-/* iOS: Opacity fade animations (applied to body element) */
-@keyframes theme-fade-to-dark {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
-}
-
-@keyframes theme-fade-to-light {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
-}
-
-body.theme-fade-to-dark {
-  animation: theme-fade-to-dark 150ms ease;
-}
-
-body.theme-fade-to-light {
-  animation: theme-fade-to-light 150ms ease;
+/* View Transitions API: Smooth theme toggle animation */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
 }
 
 /* Reusable component classes */

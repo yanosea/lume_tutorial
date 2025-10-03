@@ -6,9 +6,6 @@ interface ThemeCalculationParams {
   systemSettingDark: MediaQueryList;
 }
 
-/**
- * Determine the theme based on localStorage or system preference
- */
 function calculateSettingAsThemeString({
   localStorageTheme,
   systemSettingDark,
@@ -22,56 +19,12 @@ function calculateSettingAsThemeString({
   return "light";
 }
 
-/**
- * Update the theme with optional animation
- * - Desktop browsers: Use CSS transitions for smooth color changes
- * - iOS browsers: Use opacity fade animation to avoid WebKit bug #46041
- *   (CSS transition inheritance delay on nested elements)
- */
-function updateTheme(theme: Theme, withTransition = false): void {
-  const applyTheme = () => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
-
-  // No transition for initial load or system theme changes
-  if (!withTransition) {
-    applyTheme();
-    return;
-  }
-
-  if (isIOS) {
-    // iOS: Use opacity fade to work around WebKit transition inheritance bug
-    const animationClass = theme === "dark" ? "theme-fade-to-dark" : "theme-fade-to-light";
-
-    // Start opacity animation first
-    document.body.classList.add(animationClass);
-
-    // Wait 75ms (half of animation) then apply theme change
-    setTimeout(() => {
-      applyTheme();
-    }, 75);
-
-    // Remove animation class after completion
-    setTimeout(() => {
-      document.body.classList.remove(animationClass);
-    }, 150);
+function updateTheme(theme: Theme): void {
+  if (theme === "dark") {
+    document.documentElement.classList.add("dark");
   } else {
-    // Desktop: CSS transitions handle smooth color changes
-    applyTheme();
+    document.documentElement.classList.remove("dark");
   }
-}
-
-// Detect iOS devices early and disable CSS transitions
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-if (isIOS) {
-  // Disable global CSS transitions for iOS
-  document.documentElement.style.setProperty('--transition-duration', '0ms');
 }
 
 // Initialize theme on page load
@@ -93,7 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleButton.addEventListener("click", () => {
       const newTheme: Theme = currentTheme === "dark" ? "light" : "dark";
       localStorage.setItem("theme", newTheme);
-      updateTheme(newTheme, true);
+
+      // Use View Transitions API if available and user doesn't prefer reduced motion
+      if (
+        document.startViewTransition &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        document.startViewTransition(() => updateTheme(newTheme));
+      } else {
+        updateTheme(newTheme);
+      }
+
       currentTheme = newTheme;
     });
   }
