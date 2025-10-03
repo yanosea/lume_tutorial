@@ -21,11 +21,7 @@ export default (
       {tags && tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-4">
           {tags.map((tag: string) => (
-            <a
-              key={tag}
-              href={`/tags/${tag}.html`}
-              className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm rounded-full hover:bg-blue-200 dark:hover:bg-blue-800"
-            >
+            <a key={tag} href={`/tags/${tag}.html`} className="tag-post">
               {tag}
             </a>
           ))}

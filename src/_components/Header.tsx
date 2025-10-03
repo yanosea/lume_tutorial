@@ -9,22 +9,13 @@ export default function Header({ comp }: Lume.Data) {
           My Blog
         </a>
         <div className="flex gap-4 items-center">
-          <a
-            href="/about.html"
-            className="text-white hover:text-blue-200 dark:hover:text-blue-300 font-medium px-4 py-2 rounded-md hover:bg-white/20 dark:hover:bg-black/20"
-          >
+          <a href="/about.html" className="nav-link">
             about
           </a>
-          <a
-            href="/blog.html"
-            className="text-white hover:text-blue-200 dark:hover:text-blue-300 font-medium px-4 py-2 rounded-md hover:bg-white/20 dark:hover:bg-black/20"
-          >
+          <a href="/blog.html" className="nav-link">
             blog
           </a>
-          <a
-            href="/links.html"
-            className="text-white hover:text-blue-200 dark:hover:text-blue-300 font-medium px-4 py-2 rounded-md hover:bg-white/20 dark:hover:bg-black/20"
-          >
+          <a href="/links.html" className="nav-link">
             links
           </a>
           <comp.ThemeToggleButton />
