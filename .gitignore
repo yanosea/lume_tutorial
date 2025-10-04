@@ -1,2 +1,7 @@
-_site
-_cache
+# IGNORE DIRECTORY
+.direnv/
+_site/
+node_modules/
+# IGNORE FILE
+.DS_Store
+*.log

@@ -27,5 +27,6 @@
       "exclude": ["no-import-prefix"]
     }
   },
+  "nodeModulesDir": "auto",
   "unstable": ["temporal", "fmt-component"]
 }
