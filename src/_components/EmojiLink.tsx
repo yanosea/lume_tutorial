@@ -8,7 +8,7 @@ export default function EmojiLink({ href, emoji, ariaLabel }: EmojiLinkProps) {
   return (
     <a
       href={href}
-      className="nav-link text-2xl w-8 h-8 flex items-center justify-center"
+      className="nav-link flex items-center justify-center w-8 h-8 text-2xl"
       aria-label={ariaLabel}
     >
       {emoji}

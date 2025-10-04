@@ -1,7 +1,7 @@
 export default function Header({ comp }: Lume.Data) {
   return (
     <>
-      <header className="sticky top-0 z-10 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-900 dark:to-purple-900 text-white rounded-lg">
+      <header className="sticky top-0 z-10 md:mb-8 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-900 dark:to-purple-900 text-white rounded-lg">
         <div className="px-4 py-2 md:px-8 md:py-0">
           <nav className="py-5 md:py-6">
             <div className="flex items-center justify-between min-h-8">

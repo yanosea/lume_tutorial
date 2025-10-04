@@ -7,24 +7,10 @@ export default function Pagination({ previousUrl, nextUrl }: PaginationProps) {
   return (
     <nav className="flex justify-between mt-12">
       {previousUrl
-        ? (
-          <a
-            href={previousUrl}
-            className="link-primary font-medium"
-          >
-            ← prev
-          </a>
-        )
+        ? <a href={previousUrl} className="link-primary font-medium">← prev</a>
         : <div className="flex-1" />}
       {nextUrl
-        ? (
-          <a
-            href={nextUrl}
-            className="link-primary font-medium"
-          >
-            next →
-          </a>
-        )
+        ? <a href={nextUrl} className="link-primary font-medium">next →</a>
         : <div className="flex-1" />}
     </nav>
   );
