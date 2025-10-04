@@ -40,6 +40,7 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
           href="/feed.xml"
         />
         <script src="/assets/toggle-theme.js"></script>
+        <script src="/assets/toggle-menu.js"></script>
       </head>
       <body className="font-sans bg-slate-50 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
         <div className="max-w-7xl w-full mx-auto px-6 py-12 flex-1 flex flex-col">
