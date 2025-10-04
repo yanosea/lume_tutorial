@@ -1,6 +1,6 @@
 # IGNORE DIRECTORY
-_site/
 node_modules/
+_site/
 # IGNORE FILE
 .DS_Store
 *.log
