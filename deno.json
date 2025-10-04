@@ -27,6 +27,9 @@
       "exclude": ["no-import-prefix"]
     }
   },
+  "allow-scripts": {
+    "npm:@tailwindcss/oxide": true
+  },
   "nodeModulesDir": "auto",
   "unstable": ["temporal", "fmt-component"]
 }
