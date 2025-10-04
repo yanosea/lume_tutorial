@@ -1,5 +1,4 @@
 # IGNORE DIRECTORY
-.direnv/
 _site/
 node_modules/
 # IGNORE FILE

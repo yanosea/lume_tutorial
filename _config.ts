@@ -4,8 +4,6 @@
  * TODO:
  * 1. Change location URL to your actual site URL
  * 2. Update twitter account in src/_data.ts
- * 3. Add /favicon.svg file for automatic favicon generation
- * 4. Add images with site.add() for transform_images auto-optimization
  */
 
 import lume from "lume/mod.ts";
@@ -23,11 +21,6 @@ import minifyHTML from "lume/plugins/minify_html.ts";
 import feed from "lume/plugins/feed.ts";
 import robots from "lume/plugins/robots.ts";
 import date from "lume/plugins/date.ts";
-import favicon from "lume/plugins/favicon.ts";
-import ogImages from "lume/plugins/og_images.ts";
-import svgo from "lume/plugins/svgo.ts";
-import transformImages from "lume/plugins/transform_images.ts";
-import picture from "lume/plugins/picture.ts";
 import codeHighlight from "lume/plugins/code_highlight.ts";
 
 const site = lume({
@@ -64,11 +57,6 @@ site.use(feed({
 }));
 site.use(robots());
 site.use(date());
-site.use(favicon());
-site.use(ogImages());
-site.use(svgo());
-site.use(transformImages());
-site.use(picture());
 site.use(codeHighlight());
 
 site.add("assets");
