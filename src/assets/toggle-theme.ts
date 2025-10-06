@@ -40,9 +40,9 @@ updateTheme(currentTheme);
 
 // Setup toggle button when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleButton = document.getElementById("theme-toggle");
+  const toggleButtons = document.querySelectorAll("#theme-toggle");
 
-  if (toggleButton) {
+  toggleButtons.forEach((toggleButton) => {
     toggleButton.addEventListener("click", () => {
       const newTheme: Theme = currentTheme === "dark" ? "light" : "dark";
       localStorage.setItem("theme", newTheme);
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       currentTheme = newTheme;
     });
-  }
+  });
 });
 
 // Listen for system theme changes

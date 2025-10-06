@@ -16,12 +16,20 @@ export default function Header({ comp }: Lume.Data) {
                 <a href="/about.html" className="nav-link">about</a>
                 <a href="/blog.html" className="nav-link">blog</a>
                 <a href="/links.html" className="nav-link">links</a>
-                <comp.EmojiLink href="/feed.xml" emoji="📡" ariaLabel="RSS Feed" />
+                <comp.EmojiLink
+                  href="/feed.xml"
+                  emoji="📡"
+                  ariaLabel="RSS Feed"
+                />
                 <comp.ThemeToggleButton />
               </div>
 
               <div className="flex md:hidden gap-2 items-center">
-                <comp.EmojiLink href="/feed.xml" emoji="📡" ariaLabel="RSS Feed" />
+                <comp.EmojiLink
+                  href="/feed.xml"
+                  emoji="📡"
+                  ariaLabel="RSS Feed"
+                />
                 <comp.ThemeToggleButton />
                 <comp.HamburgerButton />
               </div>
