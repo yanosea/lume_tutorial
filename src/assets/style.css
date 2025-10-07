@@ -64,7 +64,7 @@ main {
 }
 
 .card-article:hover .link-primary {
-  @apply text-blue-800 dark:text-blue-300;
+  @apply text-blue-900 dark:text-blue-300;
 }
 
 /* ============================================================================
