@@ -15,7 +15,7 @@ export default ({ url, title, date, description, tags, activeTag, emoji }: BlogC
 
       <h2 className="mb-2 flex items-center gap-2 text-2xl font-semibold">
         {emoji && <span className="text-3xl" role="img" aria-hidden="true">{emoji}</span>}
-        <span className="link-primary relative">
+        <span className="link-primary">
           {title}
         </span>
       </h2>

@@ -7,9 +7,9 @@ export default function Header({ comp }: Lume.Data) {
             My Blog
           </a>
           <div className="hidden items-center gap-4 md:flex">
-            <a href="/about.html" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">about</a>
-            <a href="/blog.html" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">blog</a>
-            <a href="/links.html" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">links</a>
+            <a href="/about.html" className="nav-link">about</a>
+            <a href="/blog.html" className="nav-link">blog</a>
+            <a href="/links.html" className="nav-link">links</a>
             <a href="/feed.xml" aria-label="RSS Feed" className="text-2xl hover:opacity-80">📡</a>
             <comp.ThemeToggleButton />
           </div>
