@@ -6,10 +6,8 @@
    Configuration
    ============================================================================ */
 
-/* Dark mode variant */
 @variant dark (&:is(.dark *));
 
-/* View Transitions API */
 @view-transition {
   navigation: auto;
 }
@@ -17,6 +15,15 @@
 /* ============================================================================
    Base Styles
    ============================================================================ */
+
+:root {
+  --transition-fast: 150ms;
+  --transition-normal: 200ms;
+  --color-bg-light: 248 250 252;
+  --color-bg-dark: 17 24 39;
+  --color-card-light: 255 255 255;
+  --color-card-dark: 31 41 55;
+}
 
 html {
   overflow-y: scroll;
@@ -39,10 +46,10 @@ main {
   view-transition-name: main-content;
 }
 
-/* Theme toggle animation (200ms smooth cross-fade) */
+/* Theme toggle animation (smooth cross-fade) */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 200ms;
+  animation-duration: var(--transition-normal);
   animation-timing-function: ease-in-out;
 }
 
@@ -52,15 +59,37 @@ main {
 
 /* Card containers */
 .card {
-  @apply p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800 dark:shadow-2xl
-    dark:shadow-gray-700;
+  @apply p-8 rounded-lg shadow-xl;
+  background-color: rgb(var(--color-card-light));
+  transition: all var(--transition-fast) ease-in-out;
+}
+
+.dark .card {
+  background-color: rgb(var(--color-card-dark));
+  @apply shadow-2xl shadow-gray-700;
 }
 
 .card-article {
-  @apply p-6 border border-gray-200 rounded-lg bg-gray-50/50 hover:bg-gray-100/70
-    hover:border-gray-300 hover:shadow-md
-    dark:border-gray-600 dark:bg-gray-800/50 dark:hover:bg-gray-700/70
-    dark:hover:border-gray-500;
+  @apply p-6 border rounded-lg;
+  background-color: rgb(248 250 252 / 0.5);
+  border-color: rgb(229 231 235);
+  transition: all var(--transition-fast) ease-in-out;
+}
+
+.dark .card-article {
+  background-color: rgb(31 41 55 / 0.5);
+  border-color: rgb(75 85 99);
+}
+
+.card-article:hover {
+  background-color: rgb(243 244 246 / 0.7);
+  border-color: rgb(209 213 219);
+  @apply shadow-md;
+}
+
+.dark .card-article:hover {
+  background-color: rgb(55 65 81 / 0.7);
+  border-color: rgb(107 114 128);
 }
 
 .card-article:hover .link-primary {
@@ -94,12 +123,14 @@ main {
 .link-primary {
   @apply text-blue-600 hover:text-blue-800 dark:text-blue-400
     dark:hover:text-blue-300;
+  transition: color var(--transition-fast) ease-in-out;
 }
 
 /* Header navigation links */
 .nav-link {
   @apply px-4 py-2 font-medium text-white rounded-md hover:text-blue-200
     hover:bg-white/20 dark:hover:text-blue-300 dark:hover:bg-black/20;
+  transition: all var(--transition-fast) ease-in-out;
 }
 
 /* ============================================================================
@@ -108,10 +139,14 @@ main {
 
 /* Default tag style */
 .tag {
-  @apply px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded hover:bg-gray-200
+  @apply px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded
     border border-gray-300
-    dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600
-    dark:border-gray-500;
+    dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500;
+  transition: background-color var(--transition-fast) ease-in-out;
+}
+
+.tag:hover {
+  @apply bg-gray-200 dark:bg-gray-600;
 }
 
 /* Override prose-content link styles for tags */
@@ -126,16 +161,24 @@ main {
 /* Active/selected tag */
 .tag-active {
   @apply px-2 py-1 text-xs font-medium text-blue-800 bg-blue-100 rounded
-    border border-blue-300 hover:bg-blue-200
-    dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700
-    dark:hover:bg-blue-800;
+    border border-blue-300
+    dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700;
+  transition: background-color var(--transition-fast) ease-in-out;
+}
+
+.tag-active:hover {
+  @apply bg-blue-200 dark:bg-blue-800;
 }
 
 /* Blog post tags */
 .tag-post {
   @apply px-3 py-1 text-sm text-blue-800 bg-blue-100 rounded-full
-    hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200
-    dark:hover:bg-blue-800;
+    dark:bg-blue-900 dark:text-blue-200;
+  transition: background-color var(--transition-fast) ease-in-out;
+}
+
+.tag-post:hover {
+  @apply bg-blue-200 dark:bg-blue-800;
 }
 
 /* ============================================================================
@@ -199,6 +242,7 @@ main {
 .prose-content a {
   @apply text-blue-600 dark:text-blue-400;
   text-decoration: none;
+  transition: color var(--transition-fast) ease-in-out;
 }
 
 .prose-content a:hover {
@@ -252,39 +296,3 @@ main {
   font-weight: 600;
 }
 
-/* ============================================================================
-   Links Page (prose-links)
-   ============================================================================ */
-
-.prose-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.prose-links li {
-  @apply bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950
-    dark:to-purple-950;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-}
-
-.prose-links li:hover {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-}
-
-.prose-links a {
-  @apply text-blue-600 dark:text-blue-400;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.125rem;
-}
-
-.prose-links a:hover {
-  @apply text-purple-600 dark:text-purple-400;
-  text-decoration: underline;
-}

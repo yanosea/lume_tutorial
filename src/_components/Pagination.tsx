@@ -5,13 +5,13 @@ interface PaginationProps {
 
 export default function Pagination({ previousUrl, nextUrl }: PaginationProps) {
   return (
-    <nav className="flex justify-between mt-12">
-      {previousUrl
-        ? <a href={previousUrl} className="link-primary font-medium">← prev</a>
-        : <div className="flex-1" />}
-      {nextUrl
-        ? <a href={nextUrl} className="link-primary font-medium">next →</a>
-        : <div className="flex-1" />}
+    <nav className="mt-12 flex justify-between" aria-label="Pagination">
+      {previousUrl && (
+        <a href={previousUrl} className="link-primary font-medium" rel="prev">← prev</a>
+      )}
+      {nextUrl && (
+        <a href={nextUrl} className="link-primary ml-auto font-medium" rel="next">next →</a>
+      )}
     </nav>
   );
 }

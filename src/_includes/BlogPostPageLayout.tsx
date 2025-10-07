@@ -6,7 +6,7 @@ export default (
   <main className="card flex-1 prose-content">
     <div className="mb-8">
       <h1 className="heading-page mb-4 flex items-center gap-3">
-        {emoji && <span className="text-5xl">{emoji}</span>}
+        {emoji && <span className="text-5xl" role="img" aria-hidden="true">{emoji}</span>}
         <span>{title}</span>
       </h1>
       {date && (

@@ -11,14 +11,15 @@ export default ({ href, title, description, icon = "🔗" }: LinkCardProps) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="block card-article group"
+      className="card-article group block"
+      aria-label={`Visit ${title}`}
     >
       <div className="flex items-start gap-4">
-        <div className="text-3xl flex-shrink-0">
+        <div className="flex-shrink-0 text-3xl" role="img" aria-hidden="true">
           {icon}
         </div>
-        <div className="flex-1 min-w-0">
-          <h2 className="text-xl font-semibold mb-2 !text-blue-600 dark:!text-blue-400 group-hover:!text-blue-900 dark:group-hover:!text-blue-300">
+        <div className="min-w-0 flex-1">
+          <h2 className="mb-2 text-xl font-semibold !text-blue-600 group-hover:!text-blue-900 dark:!text-blue-400 dark:group-hover:!text-blue-300">
             {title}
           </h2>
           <p className="text-secondary text-sm">
