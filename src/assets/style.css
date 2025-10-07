@@ -204,9 +204,13 @@ main {
 
 .prose-content h1,
 .prose-content h2,
-.prose-content h3 {
+.prose-content h3,
+.prose-content h4,
+.prose-content h5,
+.prose-content h6 {
   font-weight: bold;
   @apply text-gray-900 dark:text-gray-100;
+  scroll-margin-top: 6rem;
 }
 
 .prose-content h1 {
