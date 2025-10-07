@@ -2,9 +2,33 @@
 title: Links
 ---
 
+export { default as LinkCard } from "./_components/LinkCard.tsx";
+
 # Links
 
-- [Twitter](#)
-- [GitHub](#)
-- [Instagram](#)
-- [Email](#)
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+  <LinkCard
+    href="#"
+    title="Twitter"
+    description="Sharing my daily thoughts and activities"
+    icon="🐦"
+  />
+  <LinkCard
+    href="#"
+    title="GitHub"
+    description="Open source projects and code"
+    icon="💻"
+  />
+  <LinkCard
+    href="#"
+    title="Instagram"
+    description="Photos and lifestyle posts"
+    icon="📸"
+  />
+  <LinkCard
+    href="#"
+    title="Email"
+    description="Get in touch with me"
+    icon="✉️"
+  />
+</div>
