@@ -9,9 +9,11 @@ interface BlogCardProps {
 
 export default ({ url, title, date, description, tags, activeTag }: BlogCardProps) => {
   return (
-    <article className="card-article">
+    <article className="card-article relative">
+      <a href={url} className="absolute inset-0" aria-label={title}></a>
+
       <h2 className="text-2xl font-semibold mb-2">
-        <a href={url} className="link-primary">
+        <a href={url} className="link-primary relative">
           {title}
         </a>
       </h2>
@@ -33,7 +35,7 @@ export default ({ url, title, date, description, tags, activeTag }: BlogCardProp
           {tags.map((tag: string) => (
             <a
               href={`/tags/${tag}.html`}
-              className={activeTag && tag === activeTag ? "tag-active" : "tag"}
+              className={`relative z-10 ${activeTag && tag === activeTag ? "tag-active" : "tag"}`}
             >
               {tag}
             </a>
