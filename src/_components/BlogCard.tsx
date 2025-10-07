@@ -39,7 +39,7 @@ export default ({ url, title, date, description, tags, activeTag, emoji }: BlogC
               href={`/tags/${tag}.html`}
               className={`relative z-10 ${activeTag && tag === activeTag ? "tag-active" : "tag"}`}
             >
-              {tag}
+              #{tag}
             </a>
           ))}
         </div>

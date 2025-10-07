@@ -29,8 +29,8 @@ export default (
       {tags && tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-4">
           {tags.map((tag: string) => (
-            <a href={`/tags/${tag}.html`} className="tag-post">
-              {tag}
+            <a href={`/tags/${tag}.html`} className="relative z-10 tag">
+              #{tag}
             </a>
           ))}
         </div>
