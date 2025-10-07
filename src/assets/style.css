@@ -57,8 +57,10 @@ main {
 }
 
 .card-article {
-  @apply p-6 border border-gray-200 rounded-lg hover:shadow-md
-    dark:border-gray-700;
+  @apply p-6 border border-gray-200 rounded-lg bg-gray-50/50 hover:bg-gray-100/70
+    hover:border-gray-300 hover:shadow-md
+    dark:border-gray-600 dark:bg-gray-800/50 dark:hover:bg-gray-700/70
+    dark:hover:border-gray-500;
 }
 
 /* ============================================================================
