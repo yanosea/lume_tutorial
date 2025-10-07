@@ -15,13 +15,13 @@ export default ({ url, title, date, description, tags, activeTag, emoji }: BlogC
 
       <h2 className="mb-2 flex items-center gap-2 text-2xl font-semibold">
         {emoji && <span className="text-3xl" role="img" aria-hidden="true">{emoji}</span>}
-        <a href={url} className="link-primary relative">
+        <span className="link-primary relative">
           {title}
-        </a>
+        </span>
       </h2>
 
       {date && (
-        <time className="text-muted text-sm" dateTime={new Date(date).toISOString().split('T')[0]}>
+        <time className="text-muted text-sm" dateTime={new Date(date).toISOString().slice(0, 10)}>
           {new Date(date).toLocaleDateString("ja-JP", {
             year: "numeric",
             month: "2-digit",

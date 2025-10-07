@@ -25,9 +25,9 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
       </head>
       <body className="flex min-h-screen flex-col bg-slate-50 font-sans dark:bg-gray-900 dark:text-gray-100">
         <comp.Header />
-        <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 py-12">
+        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 py-12">
           {children}
-        </main>
+        </div>
         <comp.Footer />
       </body>
     </html>
