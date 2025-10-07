@@ -99,6 +99,32 @@ main {
   @apply text-blue-900 dark:text-blue-300;
 }
 
+/* Table of Contents card */
+.card-toc {
+  @apply px-6 py-4 border rounded-lg;
+  background-color: rgb(248 250 252 / 0.6);
+  border-color: rgb(229 231 235);
+  transition: background-color var(--transition-fast) ease-in-out,
+              border-color var(--transition-fast) ease-in-out;
+}
+
+.dark .card-toc {
+  background-color: rgb(31 41 55 / 0.6);
+  border-color: rgb(75 85 99);
+}
+
+.card-toc > h2:first-child {
+  margin: 0 0 1rem 0;
+}
+
+.prose-content .card-toc ol {
+  margin: 0;
+}
+
+.prose-content .card-toc li:last-child {
+  margin-bottom: 0;
+}
+
 /* ============================================================================
    Typography
    ============================================================================ */
@@ -285,6 +311,9 @@ main {
   border-radius: 0.25rem;
   font-size: 0.875rem;
 }
+
+/* Code highlight theme placeholder */
+/* insert-code-theme */
 
 /* --- Tables --- */
 

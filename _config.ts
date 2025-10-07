@@ -30,6 +30,69 @@ const site = lume({
 
 site.use(jsx());
 site.use(mdx());
+
+// Helper to extract TOC from raw MDX content
+site.helper("extractToc", (content: string) => {
+  const headings: Array<{ text: string; slug: string; level: number }> = [];
+  const headingRegex = /^(#{1,3})\s+(.+)$/gm;
+  let match;
+
+  while ((match = headingRegex.exec(content)) !== null) {
+    const level = match[1].length;
+    const text = match[2].trim();
+    const slug = text
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-");
+
+    // Skip h1 (page title)
+    if (level > 1) {
+      headings.push({ text, slug, level });
+    }
+  }
+
+  return headings;
+}, { type: "filter" });
+
+// Process MDX pages to extract TOC before rendering
+site.preprocess([".mdx"], async (pages) => {
+  for (const page of pages) {
+    // Read the source file content
+    try {
+      const fullPath = `${site.options.src}${page.src.path}${page.src.ext}`;
+      const sourceFile = await Deno.readTextFile(fullPath);
+
+      // Extract frontmatter to skip the title
+      const frontmatterMatch = sourceFile.match(/^---\n([\s\S]*?)\n---/);
+      const contentAfterFrontmatter = frontmatterMatch
+        ? sourceFile.slice(frontmatterMatch[0].length)
+        : sourceFile;
+
+      const headings: Array<{ text: string; slug: string; level: number }> = [];
+      const headingRegex = /^(#{1,6})\s+(.+)$/gm;
+      let match;
+
+      while ((match = headingRegex.exec(contentAfterFrontmatter)) !== null) {
+        const level = match[1].length;
+        const text = match[2].trim();
+        const slug = text
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "-");
+
+        // Include all headings (h1-h6)
+        headings.push({ text, slug, level });
+      }
+
+      if (headings.length > 0) {
+        page.data.toc = headings;
+      }
+    } catch (e) {
+      console.error(`Error reading file for TOC: ${e.message}`);
+    }
+  }
+});
+
 site.use(tailwindcss());
 site.use(postcss());
 site.use(lightningCss());
@@ -57,7 +120,34 @@ site.use(feed({
 }));
 site.use(robots());
 site.use(date());
-site.use(codeHighlight());
+site.use(codeHighlight({
+  theme: {
+    name: "atom-one-dark",
+    cssFile: "/assets/style.css",
+    placeholder: "/* insert-code-theme */",
+  },
+}));
+
+// Add IDs to headings in HTML output
+site.process([".html"], (pages) => {
+  for (const page of pages) {
+    if (page.document) {
+      const headings = page.document.querySelectorAll(
+        "main h1, main h2, main h3, main h4, main h5, main h6",
+      );
+
+      headings.forEach((heading) => {
+        const text = heading.textContent || "";
+        const slug = text
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "-");
+
+        heading.setAttribute("id", slug);
+      });
+    }
+  }
+});
 
 site.add("assets");
 
