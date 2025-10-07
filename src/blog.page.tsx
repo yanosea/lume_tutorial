@@ -44,6 +44,7 @@ export default function* ({ comp, search, paginate }: Lume.Data) {
                     date={post.date}
                     description={post.description}
                     tags={post.tags}
+                    emoji={post.emoji}
                   />
                 ))}
               </div>

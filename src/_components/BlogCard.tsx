@@ -5,14 +5,16 @@ interface BlogCardProps {
   description?: string;
   tags?: string[];
   activeTag?: string;
+  emoji?: string;
 }
 
-export default ({ url, title, date, description, tags, activeTag }: BlogCardProps) => {
+export default ({ url, title, date, description, tags, activeTag, emoji }: BlogCardProps) => {
   return (
     <article className="card-article relative">
       <a href={url} className="absolute inset-0" aria-label={title}></a>
 
-      <h2 className="text-2xl font-semibold mb-2">
+      <h2 className="text-2xl font-semibold mb-2 flex items-center gap-2">
+        {emoji && <span className="text-3xl">{emoji}</span>}
         <a href={url} className="link-primary relative">
           {title}
         </a>

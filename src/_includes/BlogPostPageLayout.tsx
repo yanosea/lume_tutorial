@@ -1,11 +1,14 @@
 export const layout = "BaseLayout.tsx";
 
 export default (
-  { title, date, description, tags, children, readingInfo }: Lume.Data,
+  { title, date, description, tags, children, readingInfo, emoji }: Lume.Data,
 ) => (
   <main className="card flex-1 prose-content">
     <div className="mb-8">
-      <h1 className="heading-page mb-4">{title}</h1>
+      <h1 className="heading-page mb-4 flex items-center gap-3">
+        {emoji && <span className="text-5xl">{emoji}</span>}
+        <span>{title}</span>
+      </h1>
       {date && (
         <time className="text-muted text-sm block">
           {new Date(date).toLocaleDateString("ja-JP", {
