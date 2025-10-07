@@ -109,7 +109,9 @@ main {
 /* Default tag style */
 .tag {
   @apply px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded hover:bg-gray-200
-    dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600;
+    border border-gray-300
+    dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600
+    dark:border-gray-500;
 }
 
 /* Active/selected tag */
