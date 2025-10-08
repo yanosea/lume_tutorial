@@ -68,11 +68,17 @@ site.preprocess([".mdx"], async (pages) => {
         ? sourceFile.slice(frontmatterMatch[0].length)
         : sourceFile;
 
+      // Remove code blocks to avoid matching # inside them
+      const contentWithoutCodeBlocks = contentAfterFrontmatter.replace(
+        /```[\s\S]*?```/g,
+        "",
+      );
+
       const headings: Array<{ text: string; slug: string; level: number }> = [];
       const headingRegex = /^(#{1,6})\s+(.+)$/gm;
       let match;
 
-      while ((match = headingRegex.exec(contentAfterFrontmatter)) !== null) {
+      while ((match = headingRegex.exec(contentWithoutCodeBlocks)) !== null) {
         const level = match[1].length;
         const text = match[2].trim();
         const slug = text
