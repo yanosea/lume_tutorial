@@ -19,8 +19,10 @@ export default ({ href, title, description, icon = "🔗" }: LinkCardProps) => {
           {icon}
         </div>
         <div className="min-w-0 flex-1">
-          <h2 className="link-card-title mb-2 text-xl font-semibold text-blue-600 group-hover:text-blue-900 dark:text-blue-400 dark:group-hover:text-blue-300">
-            {title}
+          <h2 className="mb-2 text-xl font-semibold">
+            <span className="link-primary">
+              {title}
+            </span>
           </h2>
           <p className="text-secondary text-sm">
             {description}
