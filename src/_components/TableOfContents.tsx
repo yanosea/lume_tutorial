@@ -20,7 +20,7 @@ export default ({ toc }: TableOfContentsProps) => {
   const counters: { [key: number]: number } = {};
 
   return (
-    <nav className="card-toc mb-8" aria-labelledby="toc-heading">
+    <nav className="card-toc mb-8 lg:mb-0 lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto" aria-labelledby="toc-heading">
       <h2 id="toc-heading" className="text-xl font-bold text-gray-900 dark:text-gray-100">Table of Contents</h2>
       <ol className="space-y-1 list-none" role="list">
         {toc.map((item, index) => {
@@ -53,10 +53,10 @@ export default ({ toc }: TableOfContentsProps) => {
               key={item.slug}
               className={`${indentClass} flex items-start`}
             >
-              <span className="text-secondary select-none mr-2">{number}.</span>
+              <span className="text-muted select-none mr-2">{number}.</span>
               <a
                 href={`#${item.slug}`}
-                className="text-secondary hover:text-primary transition-colors duration-200 text-sm"
+                className="link-primary text-sm transition-colors duration-200"
               >
                 {item.text}
               </a>
