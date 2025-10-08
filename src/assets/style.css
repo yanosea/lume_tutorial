@@ -17,26 +17,8 @@
    ============================================================================ */
 
 :root {
-  --transition-fast: 150ms;
-  --transition-normal: 200ms;
   --color-card-light: 255 255 255;
   --color-card-dark: 31 41 55;
-}
-
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --transition-fast: 0ms;
-    --transition-normal: 0ms;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
 
 html {
@@ -63,7 +45,7 @@ main {
 /* Theme toggle animation (smooth cross-fade) */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: var(--transition-normal);
+  animation-duration: 200ms;
   animation-timing-function: ease-in-out;
 }
 
@@ -75,8 +57,8 @@ main {
 .card {
   @apply p-8 rounded-lg shadow-xl;
   background-color: rgb(var(--color-card-light));
-  transition: background-color var(--transition-fast) ease-in-out,
-              box-shadow var(--transition-fast) ease-in-out;
+  transition: background-color 150ms ease-in-out,
+              box-shadow 150ms ease-in-out;
 }
 
 .dark .card {
@@ -88,9 +70,9 @@ main {
   @apply p-6 border rounded-lg;
   background-color: rgb(248 250 252 / 0.5);
   border-color: rgb(229 231 235);
-  transition: background-color var(--transition-fast) ease-in-out,
-              border-color var(--transition-fast) ease-in-out,
-              box-shadow var(--transition-fast) ease-in-out;
+  transition: background-color 150ms ease-in-out,
+              border-color 150ms ease-in-out,
+              box-shadow 150ms ease-in-out;
 }
 
 .dark .card-article {
@@ -120,8 +102,8 @@ main {
   @apply px-6 py-4 border rounded-lg;
   background-color: rgb(248 250 252 / 0.6);
   border-color: rgb(229 231 235);
-  transition: background-color var(--transition-fast) ease-in-out,
-              border-color var(--transition-fast) ease-in-out;
+  transition: background-color 150ms ease-in-out,
+              border-color 150ms ease-in-out;
 }
 
 .dark .card-toc {
@@ -168,18 +150,18 @@ main {
 .link-primary {
   @apply text-blue-600 hover:text-blue-800 dark:text-blue-400
     dark:hover:text-blue-300;
-  transition: color var(--transition-fast) ease-in-out;
+  transition: color 150ms ease-in-out;
 }
 
 /* Header navigation links */
 .nav-link {
   @apply text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400;
-  transition: color var(--transition-fast) ease-in-out;
+  transition: color 150ms ease-in-out;
 }
 
 /* Link card title - override prose styles */
 .link-card-title {
-  transition: color var(--transition-fast) ease-in-out;
+  transition: color 150ms ease-in-out;
 }
 
 /* ============================================================================
@@ -191,8 +173,8 @@ main {
   @apply px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded
     border border-gray-300
     dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500;
-  transition: background-color var(--transition-fast) ease-in-out,
-              border-color var(--transition-fast) ease-in-out;
+  transition: background-color 150ms ease-in-out,
+              border-color 150ms ease-in-out;
 }
 
 .tag:hover {
@@ -204,8 +186,8 @@ main {
   @apply px-2 py-1 text-xs font-medium text-blue-800 bg-blue-100 rounded
     border border-blue-300
     dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700;
-  transition: background-color var(--transition-fast) ease-in-out,
-              border-color var(--transition-fast) ease-in-out;
+  transition: background-color 150ms ease-in-out,
+              border-color 150ms ease-in-out;
 }
 
 .tag-active:hover {
@@ -277,7 +259,7 @@ main {
 .prose-content a {
   @apply text-blue-600 dark:text-blue-400;
   text-decoration: none;
-  transition: color var(--transition-fast) ease-in-out;
+  transition: color 150ms ease-in-out;
 }
 
 .prose-content a:hover {
