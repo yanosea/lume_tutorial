@@ -3,7 +3,7 @@ export const layout = "BaseLayout.tsx";
 export default (
   { title, date, description, tags, children, readingInfo, emoji, toc, comp }: Lume.Data,
 ) => (
-  <main className="card flex-1 prose-content">
+  <div className="card flex-1 prose-content">
     <article>
       <header className="mb-8">
         <h1 className="heading-page mb-4 flex items-center gap-3">
@@ -43,5 +43,5 @@ export default (
       {toc && toc.length > 0 && <comp.TableOfContents toc={toc} />}
       {children}
     </article>
-  </main>
+  </div>
 );

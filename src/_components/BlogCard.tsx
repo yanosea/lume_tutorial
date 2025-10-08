@@ -38,6 +38,7 @@ export default ({ url, title, date, description, tags, activeTag, emoji }: BlogC
             <a
               href={`/tags/${tag}.html`}
               className={`relative z-10 ${activeTag && tag === activeTag ? "tag-active" : "tag"}`}
+              aria-label={`View posts tagged ${tag}`}
             >
               #{tag}
             </a>

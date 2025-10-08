@@ -24,10 +24,13 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
         <script src="/assets/toggle-menu.js" defer></script>
       </head>
       <body className="flex min-h-screen flex-col bg-slate-50 font-sans dark:bg-gray-900 dark:text-gray-100">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded">
+          Skip to main content
+        </a>
         <comp.Header />
-        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 py-12">
+        <main id="main-content" className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 py-12">
           {children}
-        </div>
+        </main>
         <comp.Footer />
       </body>
     </html>
