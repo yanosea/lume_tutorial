@@ -6,6 +6,7 @@ export const site = {
   description: "A blog about my hobbies and lifestyle",
   lang: "ja",
   image: "/og-image.png", // TODO: Add your Open Graph image
+  siteName: "lume-tutorial.pages.dev",
 };
 
 // Default page metadata

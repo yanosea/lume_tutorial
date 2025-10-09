@@ -4,6 +4,7 @@ interface BaseLayoutProps {
   comp: any;
   site: {
     lang: string;
+    siteName: string;
   };
 }
 
@@ -27,7 +28,7 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
           content="#111827"
           media="(prefers-color-scheme: dark)"
         />
-        <title>{title}</title>
+        <title>{title} | {site.siteName}</title>
         <link
           rel="preload"
           href="/assets/fonts/PlemolJP-Regular.woff2"

@@ -31,7 +31,7 @@ export default function* ({ search, paginate, comp }: Lume.Data) {
     for (const page of paginate(tagPosts, options)) {
       yield {
         url: page.url,
-        title: `Tag: ${tag}`,
+        title: `${tag} - Blog`,
         content: (
           <>
             <h1 className="heading-page">
