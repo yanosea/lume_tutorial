@@ -10,18 +10,16 @@ interface BlogCardProps {
 
 export default ({ url, title, date, description, tags, activeTag, emoji }: BlogCardProps) => {
   return (
-    <article className="card-article relative">
-      <a href={url} className="absolute inset-0" aria-label={`Read article: ${title}`}></a>
-
+    <article className="card-article">
       <h2 className="mb-2 flex items-center gap-2 text-2xl font-semibold">
         {emoji && <span className="text-3xl" role="img" aria-hidden="true">{emoji}</span>}
-        <span className="link-primary">
+        <a href={url} className="link-primary">
           {title}
-        </span>
+        </a>
       </h2>
 
       {date && (
-        <time className="text-muted text-sm" dateTime={new Date(date).toISOString().slice(0, 10)}>
+        <time className="text-muted text-sm block" dateTime={new Date(date).toISOString().slice(0, 10)}>
           {new Date(date).toLocaleDateString("ja-JP", {
             year: "numeric",
             month: "2-digit",
@@ -33,17 +31,19 @@ export default ({ url, title, date, description, tags, activeTag, emoji }: BlogC
       {description && <p className="text-secondary mt-3">{description}</p>}
 
       {tags && tags.length > 0 && (
-        <div className="mt-4 flex flex-wrap gap-2">
+        <ul className="mt-4 flex flex-wrap gap-2 list-none p-0" role="list">
           {tags.map((tag: string) => (
-            <a
-              href={`/tags/${tag}.html`}
-              className={`relative z-10 ${activeTag && tag === activeTag ? "tag-active" : "tag"}`}
-              aria-label={`View posts tagged ${tag}`}
-            >
-              #{tag}
-            </a>
+            <li key={tag}>
+              <a
+                href={`/tags/${tag}.html`}
+                className={activeTag && tag === activeTag ? "tag-active" : "tag"}
+                aria-label={`View posts tagged with ${tag}`}
+              >
+                #{tag}
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </article>
   );

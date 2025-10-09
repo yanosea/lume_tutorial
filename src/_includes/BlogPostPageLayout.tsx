@@ -33,13 +33,15 @@ export default (
             </p>
           )}
           {tags && tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-4" role="list" aria-label="Article tags">
+            <ul className="flex flex-wrap gap-2 mt-4 list-none p-0" aria-label="Article tags">
               {tags.map((tag: string) => (
-                <a href={`/tags/${tag}.html`} className="relative z-10 tag" role="listitem">
-                  #{tag}
-                </a>
+                <li key={tag}>
+                  <a href={`/tags/${tag}.html`} className="tag">
+                    #{tag}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
           </header>
           {/* TOC for mobile - shown before content */}

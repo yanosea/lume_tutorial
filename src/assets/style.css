@@ -17,8 +17,31 @@
    ============================================================================ */
 
 :root {
+  /* Color System - Light Mode */
   --color-card-light: 255 255 255;
   --color-card-dark: 31 41 55;
+
+  --color-card-article-bg-light: 248 250 252;
+  --color-card-article-border-light: 229 231 235;
+  --color-card-article-bg-dark: 31 41 55;
+  --color-card-article-border-dark: 75 85 99;
+
+  --color-card-article-hover-bg-light: 243 244 246;
+  --color-card-article-hover-border-light: 209 213 219;
+  --color-card-article-hover-bg-dark: 55 65 81;
+  --color-card-article-hover-border-dark: 107 114 128;
+
+  --color-toc-bg-light: 248 250 252;
+  --color-toc-border-light: 229 231 235;
+  --color-toc-bg-dark: 31 41 55;
+  --color-toc-border-dark: 75 85 99;
+
+  /* Transition Durations */
+  --transition-fast: 150ms;
+  --transition-normal: 300ms;
+
+  /* Transition Timing */
+  --ease-smooth: ease-in-out;
 }
 
 html {
@@ -33,8 +56,8 @@ html {
 /* Smooth cross-fade animation for all page transitions */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 300ms;
-  animation-timing-function: ease-in-out;
+  animation-duration: var(--transition-normal);
+  animation-timing-function: var(--ease-smooth);
 }
 
 /* ============================================================================
@@ -45,8 +68,8 @@ html {
 .card {
   @apply p-8 rounded-lg shadow-xl;
   background-color: rgb(var(--color-card-light));
-  transition: background-color 150ms ease-in-out,
-              box-shadow 150ms ease-in-out;
+  transition: background-color var(--transition-fast) var(--ease-smooth),
+              box-shadow var(--transition-fast) var(--ease-smooth);
 }
 
 .dark .card {
@@ -56,31 +79,30 @@ html {
 
 .card-article {
   @apply p-6 border rounded-lg;
-  background-color: rgb(248 250 252 / 0.5);
-  border-color: rgb(229 231 235);
-  transition: background-color 150ms ease-in-out,
-              border-color 150ms ease-in-out,
-              box-shadow 150ms ease-in-out;
+  background-color: rgb(var(--color-card-article-bg-light) / 0.5);
+  border-color: rgb(var(--color-card-article-border-light));
+  transition: background-color var(--transition-fast) var(--ease-smooth),
+              border-color var(--transition-fast) var(--ease-smooth),
+              box-shadow var(--transition-fast) var(--ease-smooth);
 }
 
 .dark .card-article {
-  background-color: rgb(31 41 55 / 0.5);
-  border-color: rgb(75 85 99);
+  background-color: rgb(var(--color-card-article-bg-dark) / 0.5);
+  border-color: rgb(var(--color-card-article-border-dark));
 }
 
 .card-article:hover {
-  background-color: rgb(243 244 246 / 0.7);
-  border-color: rgb(209 213 219);
+  background-color: rgb(var(--color-card-article-hover-bg-light) / 0.7);
+  border-color: rgb(var(--color-card-article-hover-border-light));
   @apply shadow-md;
 }
 
 .dark .card-article:hover {
-  background-color: rgb(55 65 81 / 0.7);
-  border-color: rgb(107 114 128);
+  background-color: rgb(var(--color-card-article-hover-bg-dark) / 0.7);
+  border-color: rgb(var(--color-card-article-hover-border-dark));
 }
 
-/* Use group-hover pattern instead of nested selector */
-.card-article:has(.link-primary:hover) .link-primary,
+/* Improve link visibility on card hover */
 .card-article:hover .link-primary {
   @apply text-blue-900 dark:text-blue-300;
 }
@@ -88,15 +110,15 @@ html {
 /* Table of Contents card */
 .card-toc {
   @apply px-6 py-4 border rounded-lg;
-  background-color: rgb(248 250 252 / 0.6);
-  border-color: rgb(229 231 235);
-  transition: background-color 150ms ease-in-out,
-              border-color 150ms ease-in-out;
+  background-color: rgb(var(--color-toc-bg-light) / 0.6);
+  border-color: rgb(var(--color-toc-border-light));
+  transition: background-color var(--transition-fast) var(--ease-smooth),
+              border-color var(--transition-fast) var(--ease-smooth);
 }
 
 .dark .card-toc {
-  background-color: rgb(31 41 55 / 0.6);
-  border-color: rgb(75 85 99);
+  background-color: rgb(var(--color-toc-bg-dark) / 0.6);
+  border-color: rgb(var(--color-toc-border-dark));
 }
 
 .card-toc > h2:first-child {
@@ -138,18 +160,18 @@ html {
 .link-primary {
   @apply text-blue-600 hover:text-blue-800 dark:text-blue-400
     dark:hover:text-blue-300;
-  transition: color 150ms ease-in-out;
+  transition: color var(--transition-fast) var(--ease-smooth);
 }
 
 /* Header navigation links */
 .nav-link {
   @apply text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400;
-  transition: color 150ms ease-in-out;
+  transition: color var(--transition-fast) var(--ease-smooth);
 }
 
 /* Link card title - override prose styles */
 .link-card-title {
-  transition: color 150ms ease-in-out;
+  transition: color var(--transition-fast) var(--ease-smooth);
 }
 
 /* ============================================================================
@@ -161,8 +183,8 @@ html {
   @apply px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded
     border border-gray-300
     dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500;
-  transition: background-color 150ms ease-in-out,
-              border-color 150ms ease-in-out;
+  transition: background-color var(--transition-fast) var(--ease-smooth),
+              border-color var(--transition-fast) var(--ease-smooth);
 }
 
 .tag:hover {
@@ -174,8 +196,8 @@ html {
   @apply px-2 py-1 text-xs font-medium text-blue-800 bg-blue-100 rounded
     border border-blue-300
     dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700;
-  transition: background-color 150ms ease-in-out,
-              border-color 150ms ease-in-out;
+  transition: background-color var(--transition-fast) var(--ease-smooth),
+              border-color var(--transition-fast) var(--ease-smooth);
 }
 
 .tag-active:hover {
@@ -247,7 +269,7 @@ html {
 .prose-content a {
   @apply text-blue-600 dark:text-blue-400;
   text-decoration: none;
-  transition: color 150ms ease-in-out;
+  transition: color var(--transition-fast) var(--ease-smooth);
 }
 
 .prose-content a:hover {
