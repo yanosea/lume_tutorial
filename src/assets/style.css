@@ -29,23 +29,10 @@ html {
    View Transitions
    ============================================================================ */
 
-/* Keep header, footer, and main fixed during page transitions */
-header {
-  view-transition-name: header;
-}
-
-footer {
-  view-transition-name: footer;
-}
-
-main {
-  view-transition-name: main-content;
-}
-
-/* Theme toggle animation (smooth cross-fade) */
+/* Smooth cross-fade animation for all page transitions */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 200ms;
+  animation-duration: 300ms;
   animation-timing-function: ease-in-out;
 }
 
