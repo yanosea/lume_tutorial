@@ -67,6 +67,7 @@
   --ease-smooth: ease-in-out;
 
   /* Layout */
+  --header-footer-height: 5rem;
   --header-height: 5rem;
   --toc-top-offset: 6rem;
 }
