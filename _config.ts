@@ -94,7 +94,11 @@ site.preprocess([".mdx"], async (pages) => {
         page.data.toc = headings;
       }
     } catch (e) {
-      console.error(`Error reading file for TOC: ${e.message}`);
+      console.error(
+        `Error reading file for TOC: ${
+          e instanceof Error ? e.message : String(e)
+        }`,
+      );
     }
   }
 });

@@ -8,7 +8,13 @@ export default function HamburgerButton() {
       aria-controls="mobile-menu"
       aria-label="Menu"
     >
-      <span id="menu-icon" className="transition-opacity duration-200" aria-hidden="true">☰</span>
+      <span
+        id="menu-icon"
+        className="transition-opacity duration-200"
+        aria-hidden="true"
+      >
+        ☰
+      </span>
     </button>
   );
 }

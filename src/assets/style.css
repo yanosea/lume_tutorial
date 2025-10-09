@@ -42,11 +42,28 @@
 
   /* Transition Timing */
   --ease-smooth: ease-in-out;
+
+  /* Layout */
+  --header-height: 5rem;
+  --toc-top-offset: 6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-normal: 0ms;
+  }
 }
 
 html {
   overflow-y: scroll;
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* ============================================================================
@@ -60,6 +77,13 @@ html {
   animation-timing-function: var(--ease-smooth);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
 /* ============================================================================
    Layout Components
    ============================================================================ */
@@ -68,8 +92,11 @@ html {
 .card {
   @apply p-8 rounded-lg shadow-xl;
   background-color: rgb(var(--color-card-light));
-  transition: background-color var(--transition-fast) var(--ease-smooth),
-              box-shadow var(--transition-fast) var(--ease-smooth);
+  transition:
+    background-color var(--transition-fast) var(--ease-smooth),
+    box-shadow var(--transition-fast) var(--ease-smooth);
+  contain: layout style paint;
+  content-visibility: auto;
 }
 
 .dark .card {
@@ -81,9 +108,16 @@ html {
   @apply p-6 border rounded-lg;
   background-color: rgb(var(--color-card-article-bg-light) / 0.5);
   border-color: rgb(var(--color-card-article-border-light));
-  transition: background-color var(--transition-fast) var(--ease-smooth),
-              border-color var(--transition-fast) var(--ease-smooth),
-              box-shadow var(--transition-fast) var(--ease-smooth);
+  transition:
+    background-color var(--transition-fast) var(--ease-smooth),
+    border-color var(--transition-fast) var(--ease-smooth),
+    box-shadow var(--transition-fast) var(--ease-smooth);
+  will-change: background-color, border-color, box-shadow;
+  contain: layout style paint;
+}
+
+.card-article:not(:hover) {
+  will-change: auto;
 }
 
 .dark .card-article {
@@ -112,8 +146,9 @@ html {
   @apply px-6 py-4 border rounded-lg;
   background-color: rgb(var(--color-toc-bg-light) / 0.6);
   border-color: rgb(var(--color-toc-border-light));
-  transition: background-color var(--transition-fast) var(--ease-smooth),
-              border-color var(--transition-fast) var(--ease-smooth);
+  transition:
+    background-color var(--transition-fast) var(--ease-smooth),
+    border-color var(--transition-fast) var(--ease-smooth);
 }
 
 .dark .card-toc {
@@ -161,17 +196,21 @@ html {
   @apply text-blue-600 hover:text-blue-800 dark:text-blue-400
     dark:hover:text-blue-300;
   transition: color var(--transition-fast) var(--ease-smooth);
+  text-decoration-skip-ink: auto;
 }
 
 /* Header navigation links */
 .nav-link {
-  @apply text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400;
+  @apply text-gray-700 hover:text-blue-600 dark:text-gray-300
+    dark:hover:text-blue-400;
   transition: color var(--transition-fast) var(--ease-smooth);
+  text-decoration-skip-ink: auto;
 }
 
 /* Link card title - override prose styles */
 .link-card-title {
   transition: color var(--transition-fast) var(--ease-smooth);
+  text-decoration-skip-ink: auto;
 }
 
 /* ============================================================================
@@ -180,11 +219,11 @@ html {
 
 /* Default tag style */
 .tag {
-  @apply px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded
-    border border-gray-300
-    dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500;
-  transition: background-color var(--transition-fast) var(--ease-smooth),
-              border-color var(--transition-fast) var(--ease-smooth);
+  @apply px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded border
+    border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500;
+  transition:
+    background-color var(--transition-fast) var(--ease-smooth),
+    border-color var(--transition-fast) var(--ease-smooth);
 }
 
 .tag:hover {
@@ -193,11 +232,11 @@ html {
 
 /* Active/selected tag */
 .tag-active {
-  @apply px-2 py-1 text-xs font-medium text-blue-800 bg-blue-100 rounded
-    border border-blue-300
-    dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700;
-  transition: background-color var(--transition-fast) var(--ease-smooth),
-              border-color var(--transition-fast) var(--ease-smooth);
+  @apply px-2 py-1 text-xs font-medium text-blue-800 bg-blue-100 rounded border
+    border-blue-300 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700;
+  transition:
+    background-color var(--transition-fast) var(--ease-smooth),
+    border-color var(--transition-fast) var(--ease-smooth);
 }
 
 .tag-active:hover {
@@ -218,7 +257,7 @@ html {
 .prose-content h6 {
   font-weight: bold;
   @apply text-gray-900 dark:text-gray-100;
-  scroll-margin-top: 6rem;
+  scroll-margin-top: var(--toc-top-offset);
 }
 
 .prose-content h1 {
@@ -308,6 +347,8 @@ html {
   overflow-x: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  contain: layout style paint;
+  -webkit-overflow-scrolling: touch;
 }
 
 .prose-content pre code {
@@ -334,6 +375,15 @@ html {
   border-collapse: collapse;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  overflow-x: auto;
+  display: block;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose-content tbody,
+.prose-content thead {
+  display: table;
+  width: 100%;
 }
 
 .prose-content th,
@@ -347,4 +397,3 @@ html {
   @apply bg-gray-100 dark:bg-gray-800;
   font-weight: 600;
 }
-
