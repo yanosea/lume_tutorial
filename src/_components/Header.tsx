@@ -24,7 +24,6 @@ export default function Header({ comp }: Lume.Data) {
             >
               📡
             </a>
-            <comp.FontToggleButton />
             <comp.ThemeToggleButton />
           </div>
           <div className="flex items-center gap-2 md:hidden">
@@ -35,7 +34,6 @@ export default function Header({ comp }: Lume.Data) {
             >
               📡
             </a>
-            <comp.FontToggleButton />
             <comp.ThemeToggleButton />
             <comp.HamburgerButton />
           </div>

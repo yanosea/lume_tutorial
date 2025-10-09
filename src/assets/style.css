@@ -18,8 +18,9 @@
 
 :root {
   /* Font System */
-  --font-family-base: ZenKakuGothicNew, sans-serif, system-ui, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-alt: DotGothic16, sans-serif, system-ui, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-base:
+    ZenKakuGothicNew, sans-serif, system-ui, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   /* Color System - Light Mode */
   --color-card-light: 255 255 255;

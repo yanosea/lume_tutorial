@@ -140,8 +140,6 @@ site.use(codeHighlight({
 }));
 site.use(googleFonts({
   fonts: {
-    DotGothic16:
-      "https://fonts.googleapis.com/css2?family=DotGothic16&display=swap",
     ZenKakuGothicNew:
       "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&display=swap",
   },

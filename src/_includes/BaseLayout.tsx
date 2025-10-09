@@ -28,6 +28,20 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
           media="(prefers-color-scheme: dark)"
         />
         <title>{title}</title>
+        <link
+          rel="preload"
+          href="/fonts/zenkakugothicnew-normal-400-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/zenkakugothicnew-normal-700-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <style
           dangerouslySetInnerHTML={{
             __html: "html{visibility:hidden;opacity:0;}",
@@ -42,7 +56,6 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
           title="RSS Feed"
           href="/feed.xml"
         />
-        <script src="/assets/toggle-font.js" defer></script>
         <script src="/assets/toggle-theme.js" defer></script>
         <script src="/assets/toggle-menu.js" defer></script>
       </head>
