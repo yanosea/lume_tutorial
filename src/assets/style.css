@@ -316,8 +316,9 @@ html {
 
 /* --- Lists --- */
 
-.prose-content ul,
-.prose-content ol {
+/* Apply list styles only to actual content lists, excluding utility lists like tags */
+.prose-content ul:not(.list-none),
+.prose-content ol:not(.list-none) {
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding-left: 1.5rem;
