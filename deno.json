@@ -29,7 +29,8 @@
     }
   },
   "allow-scripts": {
-    "npm:@tailwindcss/oxide": true
+    "npm:@tailwindcss/oxide": true,
+    "npm:ttf2woff2": true
   },
   "nodeModulesDir": "auto",
   "unstable": ["temporal", "fmt-component"]
