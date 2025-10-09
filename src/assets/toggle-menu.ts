@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (isExpanded) {
         // Close menu
+        menuButton.setAttribute("aria-label", "open menu");
         menuIcon.style.opacity = "0";
         setTimeout(() => {
           menuIcon.textContent = "☰";
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileMenu.style.gridTemplateRows = "0fr";
       } else {
         // Open menu
+        menuButton.setAttribute("aria-label", "close menu");
         menuIcon.style.opacity = "0";
         setTimeout(() => {
           menuIcon.textContent = "✕";
@@ -29,5 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileMenu.style.gridTemplateRows = "1fr";
       }
     });
+
+    // Initialize button label based on current state
+    const initialExpanded = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute(
+      "aria-label",
+      initialExpanded ? "close menu" : "open menu",
+    );
   }
 });

@@ -22,6 +22,7 @@ import feed from "lume/plugins/feed.ts";
 import robots from "lume/plugins/robots.ts";
 import date from "lume/plugins/date.ts";
 import codeHighlight from "lume/plugins/code_highlight.ts";
+import googleFonts from "lume/plugins/google_fonts.ts";
 
 const site = lume({
   src: "./src",
@@ -136,6 +137,15 @@ site.use(codeHighlight({
     cssFile: "/assets/style.css",
     placeholder: "/* insert-code-theme */",
   },
+}));
+site.use(googleFonts({
+  fonts: {
+    DotGothic16:
+      "https://fonts.googleapis.com/css2?family=DotGothic16&display=swap",
+    ZenKakuGothicNew:
+      "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&display=swap",
+  },
+  cssFile: "/assets/style.css",
 }));
 
 // Add IDs to headings in HTML output

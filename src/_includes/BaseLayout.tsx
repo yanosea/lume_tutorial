@@ -28,13 +28,13 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
           media="(prefers-color-scheme: dark)"
         />
         <title>{title}</title>
-        <script
+        <style
           dangerouslySetInnerHTML={{
-            __html:
-              `(function(){const theme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");if(theme==="dark"){document.documentElement.classList.add("dark");}})();`,
+            __html: "html{visibility:hidden;opacity:0;}",
           }}
         >
-        </script>
+        </style>
+        <script src="/assets/init.js"></script>
         <link rel="stylesheet" href="/assets/style.css" />
         <link
           rel="alternate"
@@ -42,10 +42,11 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
           title="RSS Feed"
           href="/feed.xml"
         />
+        <script src="/assets/toggle-font.js" defer></script>
         <script src="/assets/toggle-theme.js" defer></script>
         <script src="/assets/toggle-menu.js" defer></script>
       </head>
-      <body className="flex min-h-screen flex-col bg-slate-50 font-sans dark:bg-gray-900 dark:text-gray-100">
+      <body className="flex min-h-screen flex-col bg-slate-50 dark:bg-gray-900 dark:text-gray-100">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
