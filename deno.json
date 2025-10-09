@@ -12,7 +12,7 @@
   "imports": {
     "lume/": "https://deno.land/x/lume@v3.0.11/",
     "lume/jsx-runtime": "https://deno.land/x/ssx@v0.1.12/jsx-runtime.ts",
-    "ttf2woff2": "npm:ttf2woff2@5.0.0"
+    "wawoff2": "npm:wawoff2@2.0.1"
   },
   "compilerOptions": {
     "checkJs": true,
@@ -29,8 +29,7 @@
     }
   },
   "allow-scripts": {
-    "npm:@tailwindcss/oxide": true,
-    "npm:ttf2woff2": true
+    "npm:@tailwindcss/oxide": true
   },
   "nodeModulesDir": "auto",
   "unstable": ["temporal", "fmt-component"]

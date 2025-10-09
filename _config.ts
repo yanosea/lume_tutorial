@@ -22,7 +22,7 @@ import feed from "lume/plugins/feed.ts";
 import robots from "lume/plugins/robots.ts";
 import date from "lume/plugins/date.ts";
 import codeHighlight from "lume/plugins/code_highlight.ts";
-import ttf2woff2 from "ttf2woff2";
+import wawoff2 from "wawoff2";
 
 // Font setup configuration
 const FONT_CONFIG = {
@@ -154,8 +154,8 @@ async function convertToWOFF2(
   outputPath: string,
 ): Promise<void> {
   const ttfData = await Deno.readFile(ttfPath);
-  const woff2Data = ttf2woff2(ttfData);
-  await Deno.writeFile(outputPath, woff2Data);
+  const woff2Data = await wawoff2.compress(ttfData);
+  await Deno.writeFile(outputPath, new Uint8Array(woff2Data));
 }
 
 /**
