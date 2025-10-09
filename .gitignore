@@ -1,5 +1,6 @@
 # IGNORE DIRECTORY
 node_modules/
+src/assets/fonts/
 _site/
 # IGNORE FILE
 .DS_Store

@@ -30,14 +30,7 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
         <title>{title}</title>
         <link
           rel="preload"
-          href="/fonts/zenkakugothicnew-normal-400-latin.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/zenkakugothicnew-normal-700-latin.woff2"
+          href="/assets/fonts/PlemolJP-Regular.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

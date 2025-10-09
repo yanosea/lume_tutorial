@@ -16,11 +16,29 @@
    Base Styles
    ============================================================================ */
 
+/*
+ * PlemolJP Font
+ * Copyright (c) 2021 Yuko OTAWARA
+ * Licensed under SIL Open Font License 1.1
+ * https://github.com/yuru7/PlemolJP
+ *
+ * This font is based on:
+ * - IBM Plex Mono (SIL OFL 1.1) - Copyright IBM Corp.
+ * - IBM Plex Sans JP (SIL OFL 1.1) - Copyright IBM Corp.
+ */
+@font-face {
+  font-family: "PlemolJP";
+  src: url("/assets/fonts/PlemolJP-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Font System */
   --font-family-base:
-    ZenKakuGothicNew, sans-serif, system-ui, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    PlemolJP, sans-serif, system-ui, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
 
   /* Color System - Light Mode */
   --color-card-light: 255 255 255;
