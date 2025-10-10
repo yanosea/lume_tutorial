@@ -2,10 +2,10 @@ export default function Header({ comp }: Lume.Data) {
   return (
     <header className="sticky top-0 z-50 w-full bg-primary">
       <nav
-        className="mx-auto flex min-h-[var(--header-footer-height)] max-w-7xl items-center border-b border-primary px-6"
+        className="mx-auto flex min-h-[var(--header-footer-height)] max-w-7xl flex-col border-b border-primary"
         aria-label="Main navigation"
       >
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full items-center justify-between px-6 min-h-[var(--header-footer-height)]">
           <a
             href="/"
             className="text-2xl font-bold header-logo-link"
