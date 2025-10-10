@@ -27,7 +27,8 @@ export default ({ toc }: TableOfContentsProps) => {
     >
       <h2
         id="toc-heading"
-        className="text-xl font-bold text-gray-900 dark:text-gray-100"
+        className="text-xl font-bold"
+        style={{ color: "var(--color-fg-primary)" }}
       >
         Table of Contents
       </h2>

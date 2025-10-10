@@ -13,7 +13,7 @@ export default (
 ) => {
   return (
     <article className="card-article">
-      <header>
+      <div>
         <a href={url} className="block" aria-label={`Read article: ${title}`}>
           <h2 className="mb-2 flex items-center gap-2 text-2xl font-semibold">
             {emoji && (
@@ -46,10 +46,10 @@ export default (
 
           {description && <p className="text-secondary mt-3">{description}</p>}
         </a>
-      </header>
+      </div>
 
       {tags && tags.length > 0 && (
-        <footer className="mt-4">
+        <div className="mt-4">
           <ul
             className="flex flex-wrap gap-2 list-none p-0"
             aria-label="Article tags"
@@ -70,7 +70,7 @@ export default (
               </li>
             ))}
           </ul>
-        </footer>
+        </div>
       )}
     </article>
   );

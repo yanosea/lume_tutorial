@@ -34,30 +34,108 @@
   font-display: swap;
 }
 
+/* ============================================================================
+   Everforest Color Palette
+   Based on: https://github.com/sainnhe/everforest
+   A comfortable & pleasant color scheme designed to protect developers' eyes.
+   ============================================================================ */
+
+@theme {
+  /* Everforest Dark Palette (Medium variant - recommended default) */
+  --color-dark-bg-dim: #232a2e;
+  --color-dark-bg0: #2d353b;
+  --color-dark-bg1: #343f44;
+  --color-dark-bg2: #3d484d;
+  --color-dark-bg3: #475258;
+  --color-dark-bg4: #4f585e;
+  --color-dark-bg5: #56635f;
+  --color-dark-bg-visual: #543a48;
+  --color-dark-bg-red: #514045;
+  --color-dark-bg-green: #425047;
+  --color-dark-bg-blue: #3a515d;
+  --color-dark-bg-yellow: #4d4c43;
+  --color-dark-bg-purple: #4a444e;
+
+  --color-dark-fg: #d3c6aa;
+  --color-dark-red: #e67e80;
+  --color-dark-orange: #e69875;
+  --color-dark-yellow: #dbbc7f;
+  --color-dark-green: #a7c080;
+  --color-dark-aqua: #83c092;
+  --color-dark-blue: #7fbbb3;
+  --color-dark-purple: #d699b6;
+
+  --color-dark-grey0: #7a8478;
+  --color-dark-grey1: #859289;
+  --color-dark-grey2: #9da9a0;
+
+  --color-dark-statusline1: #a7c080;
+  --color-dark-statusline2: #d3c6aa;
+  --color-dark-statusline3: #e67e80;
+
+  /* Everforest Light Palette (Medium variant - recommended default) */
+  --color-light-bg-dim: #efebd4;
+  --color-light-bg0: #fdf6e3;
+  --color-light-bg1: #f4f0d9;
+  --color-light-bg2: #efebd4;
+  --color-light-bg3: #e6e2cc;
+  --color-light-bg4: #e0dcc7;
+  --color-light-bg5: #bdc3af;
+  --color-light-bg-visual: #eaedc8;
+  --color-light-bg-red: #fce5dc;
+  --color-light-bg-green: #f1f3d4;
+  --color-light-bg-blue: #eaf2eb;
+  --color-light-bg-yellow: #faedcd;
+  --color-light-bg-purple: #f9e7e4;
+
+  --color-light-fg: #5c6a72;
+  --color-light-red: #f85552;
+  --color-light-orange: #f57d26;
+  --color-light-yellow: #dfa000;
+  --color-light-green: #8da101;
+  --color-light-aqua: #35a77c;
+  --color-light-blue: #3a94c5;
+  --color-light-purple: #df69ba;
+
+  --color-light-grey0: #a6b0a0;
+  --color-light-grey1: #939f91;
+  --color-light-grey2: #829181;
+
+  --color-light-statusline1: #93b259;
+  --color-light-statusline2: #708089;
+  --color-light-statusline3: #e66868;
+}
+
 :root {
   /* Font System */
   --font-family-base:
     PlemolJP, sans-serif, system-ui, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
 
-  /* Color System - Light Mode */
-  --color-card-light: 255 255 255;
-  --color-card-dark: 31 41 55;
+  /* Semantic Color Mappings - Light Mode (Default) */
+  --color-bg-primary: var(--color-light-bg0);
+  --color-bg-secondary: var(--color-light-bg1);
+  --color-bg-elevated: var(--color-light-bg2);
+  --color-bg-dim: var(--color-light-bg-dim);
 
-  --color-card-article-bg-light: 248 250 252;
-  --color-card-article-border-light: 229 231 235;
-  --color-card-article-bg-dark: 31 41 55;
-  --color-card-article-border-dark: 75 85 99;
+  --color-fg-primary: var(--color-light-fg);
+  --color-fg-secondary: var(--color-light-grey1);
+  --color-fg-muted: var(--color-light-grey2);
 
-  --color-card-article-hover-bg-light: 243 244 246;
-  --color-card-article-hover-border-light: 209 213 219;
-  --color-card-article-hover-bg-dark: 55 65 81;
-  --color-card-article-hover-border-dark: 107 114 128;
+  --color-border-primary: var(--color-light-bg4);
+  --color-border-secondary: var(--color-light-bg3);
 
-  --color-toc-bg-light: 248 250 252;
-  --color-toc-border-light: 229 231 235;
-  --color-toc-bg-dark: 31 41 55;
-  --color-toc-border-dark: 75 85 99;
+  --color-accent-primary: var(--color-light-green);
+  --color-accent-blue: var(--color-light-blue);
+  --color-accent-red: var(--color-light-red);
+  --color-accent-yellow: var(--color-light-yellow);
+  --color-accent-purple: var(--color-light-purple);
+  --color-accent-aqua: var(--color-light-aqua);
+
+  --color-card-bg: var(--color-light-bg1);
+  --color-card-border: var(--color-light-bg3);
+  --color-card-hover-bg: var(--color-light-bg2);
+  --color-card-hover-border: var(--color-light-bg4);
 
   /* Transition Durations */
   --transition-fast: 150ms;
@@ -72,6 +150,33 @@
   --toc-top-offset: 6rem;
 }
 
+/* Dark Mode Semantic Color Mappings */
+.dark {
+  --color-bg-primary: var(--color-dark-bg0);
+  --color-bg-secondary: var(--color-dark-bg1);
+  --color-bg-elevated: var(--color-dark-bg2);
+  --color-bg-dim: var(--color-dark-bg-dim);
+
+  --color-fg-primary: var(--color-dark-fg);
+  --color-fg-secondary: var(--color-dark-grey1);
+  --color-fg-muted: var(--color-dark-grey2);
+
+  --color-border-primary: var(--color-dark-bg4);
+  --color-border-secondary: var(--color-dark-bg3);
+
+  --color-accent-primary: var(--color-dark-green);
+  --color-accent-blue: var(--color-dark-blue);
+  --color-accent-red: var(--color-dark-red);
+  --color-accent-yellow: var(--color-dark-yellow);
+  --color-accent-purple: var(--color-dark-purple);
+  --color-accent-aqua: var(--color-dark-aqua);
+
+  --color-card-bg: var(--color-dark-bg1);
+  --color-card-border: var(--color-dark-bg3);
+  --color-card-hover-bg: var(--color-dark-bg2);
+  --color-card-hover-border: var(--color-dark-bg4);
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     --transition-fast: 0ms;
@@ -83,6 +188,8 @@ html {
   overflow-y: scroll;
   scroll-behavior: smooth;
   font-family: var(--font-family-base);
+  background-color: var(--color-bg-primary);
+  color: var(--color-fg-primary);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -116,23 +223,20 @@ html {
 /* Card containers */
 .card {
   @apply p-8 rounded-lg shadow-xl;
-  background-color: rgb(var(--color-card-light));
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
   transition:
     background-color var(--transition-fast) var(--ease-smooth),
+    border-color var(--transition-fast) var(--ease-smooth),
     box-shadow var(--transition-fast) var(--ease-smooth);
   contain: layout style paint;
   content-visibility: auto;
 }
 
-.dark .card {
-  background-color: rgb(var(--color-card-dark));
-  @apply shadow-2xl shadow-gray-700;
-}
-
 .card-article {
   @apply p-6 border rounded-lg;
-  background-color: rgb(var(--color-card-article-bg-light) / 0.5);
-  border-color: rgb(var(--color-card-article-border-light));
+  background-color: var(--color-card-bg);
+  border-color: var(--color-card-border);
   transition:
     background-color var(--transition-fast) var(--ease-smooth),
     border-color var(--transition-fast) var(--ease-smooth),
@@ -145,40 +249,26 @@ html {
   will-change: auto;
 }
 
-.dark .card-article {
-  background-color: rgb(var(--color-card-article-bg-dark) / 0.5);
-  border-color: rgb(var(--color-card-article-border-dark));
-}
-
 .card-article:hover {
-  background-color: rgb(var(--color-card-article-hover-bg-light) / 0.7);
-  border-color: rgb(var(--color-card-article-hover-border-light));
+  background-color: var(--color-card-hover-bg);
+  border-color: var(--color-card-hover-border);
   @apply shadow-md;
 }
 
-.dark .card-article:hover {
-  background-color: rgb(var(--color-card-article-hover-bg-dark) / 0.7);
-  border-color: rgb(var(--color-card-article-hover-border-dark));
-}
 
 /* Improve link visibility on card hover */
 .card-article:hover .link-primary {
-  @apply text-blue-900 dark:text-blue-300;
+  color: var(--color-accent-blue);
 }
 
 /* Table of Contents card */
 .card-toc {
   @apply px-6 py-4 border rounded-lg;
-  background-color: rgb(var(--color-toc-bg-light) / 0.6);
-  border-color: rgb(var(--color-toc-border-light));
+  background-color: var(--color-card-bg);
+  border-color: var(--color-card-border);
   transition:
     background-color var(--transition-fast) var(--ease-smooth),
     border-color var(--transition-fast) var(--ease-smooth);
-}
-
-.dark .card-toc {
-  background-color: rgb(var(--color-toc-bg-dark) / 0.6);
-  border-color: rgb(var(--color-toc-border-dark));
 }
 
 .card-toc > h2:first-child {
@@ -199,17 +289,41 @@ html {
 
 /* Page heading */
 .heading-page {
-  @apply mb-6 text-3xl font-bold leading-normal text-gray-900
-    dark:text-gray-100;
+  @apply mb-6 text-3xl font-bold leading-normal;
+  color: var(--color-fg-primary);
 }
 
 /* Text variants */
 .text-muted {
-  @apply text-gray-600 dark:text-gray-400;
+  color: var(--color-fg-muted);
 }
 
 .text-secondary {
-  @apply text-gray-700 dark:text-gray-300;
+  color: var(--color-fg-secondary);
+}
+
+/* ============================================================================
+   Header
+   ============================================================================ */
+
+/* Sticky header with solid background */
+header {
+  background-color: var(--color-bg-primary);
+  backdrop-filter: blur(8px);
+}
+
+/* Header border color */
+header nav {
+  border-bottom-color: var(--color-border-primary);
+}
+
+/* ============================================================================
+   Footer
+   ============================================================================ */
+
+/* Footer border color */
+footer > div {
+  border-top-color: var(--color-border-primary);
 }
 
 /* ============================================================================
@@ -218,18 +332,42 @@ html {
 
 /* Primary link style */
 .link-primary {
-  @apply text-blue-600 hover:text-blue-800 dark:text-blue-400
-    dark:hover:text-blue-300;
+  color: var(--color-accent-blue);
   transition: color var(--transition-fast) var(--ease-smooth);
   text-decoration-skip-ink: auto;
 }
 
+.link-primary:hover {
+  color: var(--color-accent-aqua);
+}
+
 /* Header navigation links */
 .nav-link {
-  @apply text-gray-700 hover:text-blue-600 dark:text-gray-300
-    dark:hover:text-blue-400;
+  color: var(--color-fg-secondary);
   transition: color var(--transition-fast) var(--ease-smooth);
   text-decoration-skip-ink: auto;
+}
+
+.nav-link:hover {
+  color: var(--color-accent-primary);
+}
+
+/* Header logo link */
+.header-logo-link {
+  transition: opacity var(--transition-fast) var(--ease-smooth);
+}
+
+.header-logo-link:hover {
+  opacity: 0.8;
+}
+
+/* Hamburger menu button */
+.hamburger-button {
+  transition: opacity var(--transition-fast) var(--ease-smooth);
+}
+
+.hamburger-button:hover {
+  opacity: 0.8;
 }
 
 /* Link card title - override prose styles */
@@ -244,28 +382,40 @@ html {
 
 /* Default tag style */
 .tag {
-  @apply px-2 py-1 text-xs text-gray-700 bg-gray-100 rounded border
-    border-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500;
+  @apply px-2 py-1 text-xs rounded border;
+  color: var(--color-fg-secondary);
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-border-secondary);
   transition:
     background-color var(--transition-fast) var(--ease-smooth),
-    border-color var(--transition-fast) var(--ease-smooth);
+    border-color var(--transition-fast) var(--ease-smooth),
+    color var(--transition-fast) var(--ease-smooth);
 }
 
 .tag:hover {
-  @apply bg-gray-200 border-gray-400 dark:bg-gray-600 dark:border-gray-400;
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-primary);
+  color: var(--color-fg-primary);
 }
 
 /* Active/selected tag */
 .tag-active {
-  @apply px-2 py-1 text-xs font-medium text-blue-800 bg-blue-100 rounded border
-    border-blue-300 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700;
+  @apply px-2 py-1 text-xs font-medium rounded border;
+  color: var(--color-accent-primary);
+  background-color: var(--color-light-bg-green);
+  border-color: var(--color-accent-primary);
   transition:
     background-color var(--transition-fast) var(--ease-smooth),
-    border-color var(--transition-fast) var(--ease-smooth);
+    border-color var(--transition-fast) var(--ease-smooth),
+    color var(--transition-fast) var(--ease-smooth);
+}
+
+.dark .tag-active {
+  background-color: var(--color-dark-bg-green);
 }
 
 .tag-active:hover {
-  @apply bg-blue-200 border-blue-400 dark:bg-blue-800 dark:border-blue-600;
+  filter: brightness(1.1);
 }
 
 /* ============================================================================
@@ -281,7 +431,7 @@ html {
 .prose-content h5,
 .prose-content h6 {
   font-weight: bold;
-  @apply text-gray-900 dark:text-gray-100;
+  color: var(--color-fg-primary);
   scroll-margin-top: var(--toc-top-offset);
 }
 
@@ -332,13 +482,13 @@ html {
 /* --- Links --- */
 
 .prose-content a {
-  @apply text-blue-600 dark:text-blue-400;
+  color: var(--color-accent-blue);
   text-decoration: none;
   transition: color var(--transition-fast) var(--ease-smooth);
 }
 
 .prose-content a:hover {
-  @apply text-blue-800 dark:text-blue-300;
+  color: var(--color-accent-aqua);
 }
 
 /* Override prose link styles for tags */
@@ -348,26 +498,28 @@ html {
 }
 
 .prose-content .tag {
-  @apply text-gray-700 dark:text-gray-300;
+  color: var(--color-fg-secondary);
 }
 
 .prose-content .tag:hover {
-  @apply text-gray-700 bg-gray-200 dark:text-gray-300 dark:bg-gray-600;
+  color: var(--color-fg-primary);
+  background-color: var(--color-bg-secondary);
 }
 
 .prose-content .tag-active {
-  @apply text-blue-800 dark:text-blue-200;
+  color: var(--color-accent-primary);
 }
 
 .prose-content .tag-active:hover {
-  @apply text-blue-800 bg-blue-200 dark:text-blue-200 dark:bg-blue-800;
+  filter: brightness(1.1);
 }
 
 /* --- Code --- */
 
 /* Code blocks (must come before inline code for proper specificity) */
 .prose-content pre {
-  @apply bg-gray-900 dark:bg-gray-950 text-gray-100;
+  background-color: var(--color-dark-bg0);
+  color: var(--color-dark-fg);
   padding: 1rem;
   border-radius: 0.5rem;
   overflow-x: auto;
@@ -385,7 +537,8 @@ html {
 
 /* Inline code */
 .prose-content :not(pre) > code {
-  @apply bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100;
+  background-color: var(--color-bg-elevated);
+  color: var(--color-fg-primary);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -414,13 +567,13 @@ html {
 
 .prose-content th,
 .prose-content td {
-  @apply border border-gray-200 dark:border-gray-700;
+  border: 1px solid var(--color-border-secondary);
   padding: 0.5rem;
   text-align: left;
 }
 
 .prose-content th {
-  @apply bg-gray-100 dark:bg-gray-800;
+  background-color: var(--color-bg-elevated);
   font-weight: 600;
 }
 

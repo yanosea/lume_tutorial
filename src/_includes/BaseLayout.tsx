@@ -20,12 +20,12 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
         />
         <meta
           name="theme-color"
-          content="#f8fafc"
+          content="#fdf6e3"
           media="(prefers-color-scheme: light)"
         />
         <meta
           name="theme-color"
-          content="#111827"
+          content="#2d353b"
           media="(prefers-color-scheme: dark)"
         />
         <title>{title} | {site.siteName}</title>
@@ -53,10 +53,21 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
         <script src="/assets/toggle-theme.js" defer></script>
         <script src="/assets/toggle-menu.js" defer></script>
       </head>
-      <body className="flex min-h-screen flex-col bg-slate-50 dark:bg-gray-900 dark:text-gray-100">
+      <body
+        className="flex min-h-screen flex-col"
+        style={{
+          backgroundColor: "var(--color-bg-primary)",
+          color: "var(--color-fg-primary)",
+        }}
+      >
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:px-4 focus:py-2 focus:rounded focus:outline-none focus:ring-2"
+          style={{
+            backgroundColor: "var(--color-accent-primary)",
+            color: "var(--color-light-bg0)",
+            borderColor: "var(--color-accent-aqua)",
+          }}
         >
           Skip to main content
         </a>

@@ -8,7 +8,7 @@ export default (
     <div className="flex flex-col lg:flex-row gap-8">
       <div className="flex-1 prose-content lg:min-w-0">
         <article>
-          <header className="mb-8">
+          <div className="mb-8">
             <h1 className="heading-page mb-4 flex items-center gap-3">
               {emoji && (
                 <span
@@ -42,7 +42,7 @@ export default (
               )}
             </div>
             {description && (
-              <p className="text-secondary mt-3 text-lg">{description}</p>
+              <p className="mt-3 text-lg">{description}</p>
             )}
             {tags && tags.length > 0 && (
               <nav aria-label="Article tags">
@@ -57,7 +57,7 @@ export default (
                 </ul>
               </nav>
             )}
-          </header>
+          </div>
           {/* TOC for mobile - shown before content */}
           {toc && toc.length > 0 && (
             <nav className="lg:hidden" aria-label="Table of Contents">
