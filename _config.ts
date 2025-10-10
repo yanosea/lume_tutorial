@@ -326,7 +326,7 @@ site.use(robots());
 site.use(date());
 site.use(codeHighlight({
   theme: {
-    name: "atom-one-dark",
+    name: "night-owl",
     cssFile: "/assets/style.css",
     placeholder: "/* insert-code-theme */",
   },
