@@ -144,9 +144,17 @@
   /* Transition Timing */
   --ease-smooth: ease-in-out;
 
+  /* Transition Shorthand */
+  --transition-color: color var(--transition-fast) var(--ease-smooth);
+  --transition-opacity: opacity var(--transition-fast) var(--ease-smooth);
+  --transition-bg-border: background-color var(--transition-fast) var(--ease-smooth),
+                         border-color var(--transition-fast) var(--ease-smooth);
+  --transition-card: background-color var(--transition-fast) var(--ease-smooth),
+                    border-color var(--transition-fast) var(--ease-smooth),
+                    box-shadow var(--transition-fast) var(--ease-smooth);
+
   /* Layout */
   --header-footer-height: 5rem;
-  --header-height: 5rem;
   --toc-top-offset: 6rem;
 }
 
@@ -225,10 +233,7 @@ html {
   @apply p-8 rounded-lg shadow-xl;
   background-color: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
-  transition:
-    background-color var(--transition-fast) var(--ease-smooth),
-    border-color var(--transition-fast) var(--ease-smooth),
-    box-shadow var(--transition-fast) var(--ease-smooth);
+  transition: var(--transition-card);
   contain: layout style paint;
   content-visibility: auto;
 }
@@ -237,10 +242,7 @@ html {
   @apply p-6 border rounded-lg;
   background-color: var(--color-card-bg);
   border-color: var(--color-card-border);
-  transition:
-    background-color var(--transition-fast) var(--ease-smooth),
-    border-color var(--transition-fast) var(--ease-smooth),
-    box-shadow var(--transition-fast) var(--ease-smooth);
+  transition: var(--transition-card);
   will-change: background-color, border-color, box-shadow;
   contain: layout style paint;
 }
@@ -255,7 +257,6 @@ html {
   @apply shadow-md;
 }
 
-
 /* Improve link visibility on card hover */
 .card-article:hover .link-primary {
   color: var(--color-accent-blue);
@@ -266,9 +267,7 @@ html {
   @apply px-6 py-4 border rounded-lg;
   background-color: var(--color-card-bg);
   border-color: var(--color-card-border);
-  transition:
-    background-color var(--transition-fast) var(--ease-smooth),
-    border-color var(--transition-fast) var(--ease-smooth);
+  transition: var(--transition-bg-border);
 }
 
 .card-toc > h2:first-child {
@@ -359,7 +358,7 @@ header {
 /* Primary link style */
 .link-primary {
   color: var(--color-accent-blue);
-  transition: color var(--transition-fast) var(--ease-smooth);
+  transition: var(--transition-color);
   text-decoration-skip-ink: auto;
 }
 
@@ -370,7 +369,7 @@ header {
 /* Header navigation links */
 .nav-link {
   color: var(--color-fg-secondary);
-  transition: color var(--transition-fast) var(--ease-smooth);
+  transition: var(--transition-color);
   text-decoration-skip-ink: auto;
 }
 
@@ -381,7 +380,7 @@ header {
 /* Interactive elements with opacity transition */
 .header-logo-link,
 .hamburger-button {
-  transition: opacity var(--transition-fast) var(--ease-smooth);
+  transition: var(--transition-opacity);
 }
 
 .header-logo-link:hover,
@@ -389,9 +388,23 @@ header {
   opacity: 0.8;
 }
 
+/* Hamburger menu icon */
+.hamburger-icon {
+  transition: var(--transition-opacity);
+}
+
+/* Theme toggle button */
+.theme-toggle-button {
+  transition: var(--transition-opacity);
+}
+
+.theme-toggle-button:hover {
+  opacity: 0.8;
+}
+
 /* Link card title - override prose styles */
 .link-card-title {
-  transition: color var(--transition-fast) var(--ease-smooth);
+  transition: var(--transition-color);
   text-decoration-skip-ink: auto;
 }
 
@@ -405,10 +418,7 @@ header {
   color: var(--color-fg-secondary);
   background-color: var(--color-bg-elevated);
   border-color: var(--color-border-secondary);
-  transition:
-    background-color var(--transition-fast) var(--ease-smooth),
-    border-color var(--transition-fast) var(--ease-smooth),
-    color var(--transition-fast) var(--ease-smooth);
+  transition: var(--transition-bg-border), var(--transition-color);
 }
 
 .tag:hover {
@@ -423,10 +433,7 @@ header {
   color: var(--color-accent-primary);
   background-color: var(--color-light-bg-green);
   border-color: var(--color-accent-primary);
-  transition:
-    background-color var(--transition-fast) var(--ease-smooth),
-    border-color var(--transition-fast) var(--ease-smooth),
-    color var(--transition-fast) var(--ease-smooth);
+  transition: var(--transition-bg-border), var(--transition-color);
 }
 
 .dark .tag-active {
@@ -503,7 +510,7 @@ header {
 .prose-content a {
   color: var(--color-accent-blue);
   text-decoration: none;
-  transition: color var(--transition-fast) var(--ease-smooth);
+  transition: var(--transition-color);
 }
 
 .prose-content a:hover {

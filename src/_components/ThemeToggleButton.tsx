@@ -5,7 +5,7 @@ export default function ThemeToggleButton() {
       id="theme-toggle"
       aria-label="Toggle theme"
       aria-live="polite"
-      class="flex items-center justify-center w-8 h-8 text-2xl rounded-lg cursor-pointer hover:opacity-80"
+      class="flex items-center justify-center w-8 h-8 text-2xl rounded-lg cursor-pointer theme-toggle-button"
     >
       <span class="dark:hidden" aria-hidden="true">☀️</span>
       <span class="hidden dark:inline" aria-hidden="true">🌙</span>

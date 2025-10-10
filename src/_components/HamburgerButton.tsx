@@ -10,7 +10,7 @@ export default function HamburgerButton() {
     >
       <span
         id="menu-icon"
-        className="transition-opacity duration-200"
+        className="hamburger-icon"
         aria-hidden="true"
       >
         ☰
