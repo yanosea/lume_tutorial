@@ -7,6 +7,7 @@ export const site = {
   lang: "ja",
   image: "/og-image.png", // TODO: Add your Open Graph image
   siteName: "lume-tutorial.pages.dev",
+  utterancesRepo: "yanosea/lume_tutorial", // GitHub repo for comments
 };
 
 // Default page metadata

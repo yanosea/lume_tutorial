@@ -1,7 +1,7 @@
 export const layout = "BaseLayout.tsx";
 
 export default (
-  { title, date, description, tags, children, readingInfo, emoji, toc, comp }:
+  { title, date, description, tags, children, readingInfo, emoji, toc, comp, site }:
     Lume.Data,
 ) => (
   <div className="card flex-1">
@@ -79,5 +79,8 @@ export default (
         </aside>
       )}
     </div>
+
+    {/* Comments section - full width, below article and TOC */}
+    <comp.UtterancesComments repo={site.utterancesRepo} />
   </div>
 );

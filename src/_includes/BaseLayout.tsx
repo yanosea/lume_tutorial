@@ -52,6 +52,7 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
         />
         <script src="/assets/toggle-theme.js" defer></script>
         <script src="/assets/toggle-menu.js" defer></script>
+        <script src="/assets/utterances.js" defer></script>
       </head>
       <body className="flex min-h-screen flex-col bg-primary text-primary">
         <a

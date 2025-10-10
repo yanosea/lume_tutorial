@@ -301,7 +301,11 @@ site.use(tailwindcss());
 site.use(postcss());
 site.use(lightningCss());
 site.use(paginate());
-site.use(esbuild());
+site.use(esbuild({
+  options: {
+    format: "iife",
+  },
+}));
 site.use(sitemap());
 site.use(metas());
 site.use(readingInfo({

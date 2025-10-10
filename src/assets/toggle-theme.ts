@@ -2,7 +2,35 @@
  * Theme toggle logic with system preference support
  */
 
-import { getItem, setItem, type Theme, THEME_CONFIG } from "./utils.ts";
+// Inline utilities to avoid module conflicts
+const storageAvailable = (() => {
+  try {
+    const x = "__storage_test__";
+    localStorage.setItem(x, x);
+    localStorage.removeItem(x);
+    return true;
+  } catch {
+    return false;
+  }
+})();
+
+function getItem(key: string): string | null {
+  return storageAvailable ? localStorage.getItem(key) : null;
+}
+
+function setItem(key: string, value: string): void {
+  if (storageAvailable) {
+    localStorage.setItem(key, value);
+  }
+}
+
+const THEME_CONFIG = {
+  STORAGE_KEY: "theme",
+  DARK: "dark",
+  LIGHT: "light",
+} as const;
+
+type Theme = typeof THEME_CONFIG.DARK | typeof THEME_CONFIG.LIGHT;
 
 const getCurrentTheme = (): Theme => {
   const stored = getItem(THEME_CONFIG.STORAGE_KEY);
@@ -29,9 +57,8 @@ const updateButtonLabel = (currentTheme: Theme): void => {
   });
 };
 
-// Initialize theme
+// Initialize theme state
 let currentTheme = getCurrentTheme();
-applyTheme(currentTheme);
 
 // Setup toggle button
 document.addEventListener("DOMContentLoaded", () => {
