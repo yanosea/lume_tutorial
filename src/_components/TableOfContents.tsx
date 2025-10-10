@@ -25,11 +25,7 @@ export default ({ toc }: TableOfContentsProps) => {
       role="navigation"
       aria-labelledby="toc-heading"
     >
-      <h2
-        id="toc-heading"
-        className="text-xl font-bold"
-        style={{ color: "var(--color-fg-primary)" }}
-      >
+      <h2 id="toc-heading" className="text-xl font-bold text-primary">
         Table of Contents
       </h2>
       <ol className="space-y-1 list-none">

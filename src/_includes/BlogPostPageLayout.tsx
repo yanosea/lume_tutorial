@@ -42,7 +42,7 @@ export default (
               )}
             </div>
             {description && (
-              <p className="mt-3 text-lg">{description}</p>
+              <p className="text-secondary mt-3 text-lg">{description}</p>
             )}
             {tags && tags.length > 0 && (
               <nav aria-label="Article tags">

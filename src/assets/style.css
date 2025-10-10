@@ -293,37 +293,63 @@ html {
   color: var(--color-fg-primary);
 }
 
-/* Text variants */
-.text-muted {
-  color: var(--color-fg-muted);
+/* ============================================================================
+   Utility Classes - Color & Background
+   ============================================================================ */
+
+/* Text color variants */
+.text-primary {
+  color: var(--color-fg-primary);
 }
 
 .text-secondary {
   color: var(--color-fg-secondary);
 }
 
+.text-muted {
+  color: var(--color-fg-muted);
+}
+
+/* Background variants */
+.bg-primary {
+  background-color: var(--color-bg-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-bg-secondary);
+}
+
+.bg-elevated {
+  background-color: var(--color-bg-elevated);
+}
+
+/* Border variants */
+.border-primary {
+  border-color: var(--color-border-primary);
+}
+
+.border-secondary {
+  border-color: var(--color-border-secondary);
+}
+
 /* ============================================================================
-   Header
+   Accessibility - Skip Link
+   ============================================================================ */
+
+.skip-link:focus {
+  background-color: var(--color-accent-primary);
+  color: var(--color-light-bg0);
+  border-color: var(--color-accent-aqua);
+}
+
+/* ============================================================================
+   Header & Footer
    ============================================================================ */
 
 /* Sticky header with solid background */
 header {
   background-color: var(--color-bg-primary);
   backdrop-filter: blur(8px);
-}
-
-/* Header border color */
-header nav {
-  border-bottom-color: var(--color-border-primary);
-}
-
-/* ============================================================================
-   Footer
-   ============================================================================ */
-
-/* Footer border color */
-footer > div {
-  border-top-color: var(--color-border-primary);
 }
 
 /* ============================================================================
@@ -352,20 +378,13 @@ footer > div {
   color: var(--color-accent-primary);
 }
 
-/* Header logo link */
-.header-logo-link {
-  transition: opacity var(--transition-fast) var(--ease-smooth);
-}
-
-.header-logo-link:hover {
-  opacity: 0.8;
-}
-
-/* Hamburger menu button */
+/* Interactive elements with opacity transition */
+.header-logo-link,
 .hamburger-button {
   transition: opacity var(--transition-fast) var(--ease-smooth);
 }
 
+.header-logo-link:hover,
 .hamburger-button:hover {
   opacity: 0.8;
 }

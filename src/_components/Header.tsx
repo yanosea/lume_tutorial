@@ -1,16 +1,9 @@
 export default function Header({ comp }: Lume.Data) {
   return (
-    <header
-      className="sticky top-0 z-50 w-full"
-      style={{ backgroundColor: "var(--color-bg-primary)" }}
-    >
+    <header className="sticky top-0 z-50 w-full bg-primary">
       <nav
-        className="mx-auto flex min-h-[var(--header-footer-height)] max-w-7xl items-center border-b px-6"
+        className="mx-auto flex min-h-[var(--header-footer-height)] max-w-7xl items-center border-b border-primary px-6"
         aria-label="Main navigation"
-        style={{
-          minHeight: "var(--header-footer-height)",
-          borderColor: "var(--color-border-primary)",
-        }}
       >
         <div className="flex w-full items-center justify-between">
           <a
