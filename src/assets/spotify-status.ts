@@ -21,6 +21,9 @@ const container = document.getElementById(
 const albumImage = document.getElementById(
   "spotify-album-image",
 ) as HTMLImageElement | null;
+const albumImageExpanded = document.getElementById(
+  "spotify-album-image-expanded",
+) as HTMLImageElement | null;
 const statusText = document.getElementById(
   "spotify-status-text",
 ) as HTMLSpanElement | null;
@@ -217,10 +220,14 @@ function updateUI(isNowPlaying: boolean, track: Track) {
     }
   }
 
-  // Update album image
+  // Update album images (both compact and expanded views)
   if (albumImage) {
     albumImage.src = track.imageUrl;
     albumImage.alt = `${track.albumName} artwork`;
+  }
+  if (albumImageExpanded) {
+    albumImageExpanded.src = track.imageUrl;
+    albumImageExpanded.alt = `${track.albumName} artwork`;
   }
 
   // Update track link

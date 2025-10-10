@@ -71,6 +71,7 @@ export default ({ title, children, comp, site }: BaseLayoutProps) => (
           {children}
         </main>
         <comp.Footer />
+        <comp.SpotifyStatus />
       </body>
     </html>
   </>
