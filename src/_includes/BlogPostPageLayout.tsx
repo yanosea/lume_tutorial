@@ -1,8 +1,18 @@
 export const layout = "BaseLayout.tsx";
 
 export default (
-  { title, date, description, tags, children, readingInfo, emoji, toc, comp, site }:
-    Lume.Data,
+  {
+    title,
+    date,
+    description,
+    tags,
+    children,
+    readingInfo,
+    emoji,
+    toc,
+    comp,
+    site,
+  }: Lume.Data,
 ) => (
   <div className="card flex-1">
     <div className="flex flex-col lg:flex-row gap-8">

@@ -147,11 +147,13 @@
   /* Transition Shorthand */
   --transition-color: color var(--transition-fast) var(--ease-smooth);
   --transition-opacity: opacity var(--transition-fast) var(--ease-smooth);
-  --transition-bg-border: background-color var(--transition-fast) var(--ease-smooth),
-                         border-color var(--transition-fast) var(--ease-smooth);
-  --transition-card: background-color var(--transition-fast) var(--ease-smooth),
-                    border-color var(--transition-fast) var(--ease-smooth),
-                    box-shadow var(--transition-fast) var(--ease-smooth);
+  --transition-bg-border:
+    background-color var(--transition-fast) var(--ease-smooth), border-color
+    var(--transition-fast) var(--ease-smooth);
+  --transition-card:
+    background-color var(--transition-fast) var(--ease-smooth), border-color
+    var(--transition-fast) var(--ease-smooth), box-shadow var(--transition-fast)
+    var(--ease-smooth);
 
   /* Layout */
   --header-footer-height: 5rem;
@@ -309,6 +311,22 @@ html {
   color: var(--color-fg-muted);
 }
 
+.text-tertiary {
+  color: var(--color-fg-muted);
+}
+
+.text-accent {
+  color: var(--color-accent-primary);
+}
+
+.text-red {
+  color: var(--color-accent-red);
+}
+
+.text-green {
+  color: var(--color-accent-primary);
+}
+
 /* Background variants */
 .bg-primary {
   background-color: var(--color-bg-primary);
@@ -366,6 +384,17 @@ header {
   color: var(--color-accent-aqua);
 }
 
+/* Spotify link style */
+.link-spotify {
+  color: var(--color-fg-primary);
+  transition: var(--transition-color);
+  text-decoration-skip-ink: auto;
+}
+
+.link-spotify:hover {
+  color: var(--color-accent-primary);
+}
+
 /* Header navigation links */
 .nav-link {
   color: var(--color-fg-secondary);
@@ -418,7 +447,9 @@ header {
   color: var(--color-fg-secondary);
   background-color: var(--color-bg-elevated);
   border-color: var(--color-border-secondary);
-  transition: var(--transition-bg-border), var(--transition-color);
+  transition:
+    var(--transition-bg-border),
+    var(--transition-color);
 }
 
 .tag:hover {
@@ -433,7 +464,9 @@ header {
   color: var(--color-accent-primary);
   background-color: var(--color-light-bg-green);
   border-color: var(--color-accent-primary);
-  transition: var(--transition-bg-border), var(--transition-color);
+  transition:
+    var(--transition-bg-border),
+    var(--transition-color);
 }
 
 .dark .tag-active {
